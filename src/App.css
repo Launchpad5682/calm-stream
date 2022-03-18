@@ -9,8 +9,6 @@
   --padding-sm: 2rem;
   --padding-lg: 5rem;
   --border-radius-search: 1rem;
-
-  color: var(--white);
 }
 
 .body--section {
@@ -19,6 +17,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--dark-background-color);
+  color: var(--white);
 }
 
 .padding--xs {
