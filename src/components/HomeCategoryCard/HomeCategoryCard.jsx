@@ -3,6 +3,7 @@ import "./HomeCategoryCard.css";
 
 export function HomeCategoryCard({ category }) {
   const { displayName, path } = category;
+
   return (
     <div className="category__card" onClick={() => {}}>
       <div className="category__image">
