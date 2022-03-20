@@ -4,8 +4,11 @@
   display: flex;
   flex-direction: column;
   row-gap: 2rem;
-  width: 45rem;
-  background-color: rebeccapurple;
+  width: 35rem;
+}
+
+.drawer__container--dark {
+  background-color: var(--dark-background-color);
 }
 
 .filter--heading {
@@ -35,4 +38,12 @@
 
 .cursor--pointer {
   cursor: pointer;
+}
+
+.navlink {
+  display: flex;
+  text-decoration: none;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
 }
