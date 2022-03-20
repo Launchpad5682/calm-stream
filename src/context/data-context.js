@@ -9,10 +9,28 @@ export const useDataProvider = () => useContext(DataContext);
 const initialState = {
   videos: [],
   categories: [],
+  likes: [],
+  playlists: [],
+  history: [],
+  modal: false,
+  selectedVideo: null,
+  drawerState: false,
 };
 
 export const DataProvider = ({ children }) => {
-  const [{ videos, categories }, dispatch] = useReducer(reducer, initialState);
+  const [
+    {
+      videos,
+      categories,
+      history,
+      likes,
+      modal,
+      selectedVideo,
+      playlists,
+      drawerState,
+    },
+    dispatch,
+  ] = useReducer(reducer, initialState);
 
   useEffect(() => {
     (async () => {
@@ -42,7 +60,17 @@ export const DataProvider = ({ children }) => {
     })();
   }, []);
 
-  const value = { videos, categories };
+  const value = {
+    videos,
+    categories,
+    likes,
+    history,
+    modal,
+    selectedVideo,
+    playlists,
+    drawerState,
+    dispatch,
+  };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 };
