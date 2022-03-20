@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAuthProvider } from "../context/auth-context";
 import { useDataProvider } from "../context/data-context";
+import { likeVideo, unLikeVideo } from "../utils";
 
 export function useVideoLike(video) {
   const [likedVideo, setLikedVideo] = useState(false);
@@ -16,33 +16,11 @@ export function useVideoLike(video) {
     }
   }, [likes, video]);
 
-  const likeHandler = async () => {
+  const likeHandler = () => {
     if (likedVideo) {
-      try {
-        const response = await axios.delete(`/api/user/likes/${video._id}`, {
-          headers: { authorization: token },
-        });
-        const { data, status } = response;
-        if (status === 200) {
-          dispatch({ type: "SET_LIKED_VIDEOS", payload: data.likes });
-        }
-      } catch (error) {
-        console.error(error);
-      }
+      unLikeVideo(video, token, dispatch);
     } else {
-      try {
-        const response = await axios.post(
-          "/api/user/likes",
-          { video: video },
-          { headers: { authorization: token } }
-        );
-        const { data, status } = response;
-        if (status === 201) {
-          dispatch({ type: "SET_LIKED_VIDEOS", payload: data.likes });
-        }
-      } catch (error) {
-        console.error(error);
-      }
+      likeVideo(video, token, dispatch);
     }
   };
 
