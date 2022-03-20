@@ -20,7 +20,7 @@ export function SingleVideo() {
   const { token } = useAuthProvider();
 
   useEffect(() => {
-    if (token) {
+    if (token && Object.entries(video).length !== 0) {
       (async () => {
         const response = await axios.post(
           "/api/user/history",
@@ -33,7 +33,7 @@ export function SingleVideo() {
         dispatch({ type: "SET_HISTORY", payload: response.data.history });
       })();
     }
-  }, []);
+  }, [video]);
 
   return (
     <>
