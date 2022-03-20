@@ -34,6 +34,10 @@
   display: none;
 }
 
+.drawer--utils {
+  display: none;
+}
+
 @media screen and (max-width: 1000px) {
   .body {
     grid-template-rows: auto 1fr;
@@ -57,5 +61,9 @@
     right: 0;
     background-color: var(--white);
     z-index: 5;
+  }
+
+  .drawer--utils {
+    display: block;
   }
 }
