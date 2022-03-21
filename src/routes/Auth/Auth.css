@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; 
+  height: 100%;
 }
 
 .form--container {
@@ -24,7 +24,7 @@
 
 .forgot--link {
   text-decoration: none;
-  color: var(--azraq-blue);
+  color: var(--green-teal);
 }
 
 .fullwidth-btn {

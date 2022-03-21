@@ -22,7 +22,7 @@ export function Login() {
               value={form.email}
               onChange={changeHandler}
             />
-            <label className="inputbox__label--name label__name--white inputbox__label--blue">
+            <label className="inputbox__label--name label__name--white inputbox__label--green">
               <span className="inputbox__label--content">Email</span>
             </label>
           </div>
@@ -35,7 +35,7 @@ export function Login() {
               value={form.password}
               onChange={changeHandler}
             />
-            <label className="inputbox__label--name label__name--white inputbox__label--blue">
+            <label className="inputbox__label--name label__name--white inputbox__label--green">
               <span className="inputbox__label--content">Password</span>
             </label>
           </div>
@@ -54,18 +54,18 @@ export function Login() {
             </Link>
           </div>
           <button
-            className="button--sm button__solid button--blue button__rounded--md fullwidth-btn bold--typography"
+            className="button--sm button__solid button--green button__rounded--md fullwidth-btn bold--typography"
             type="submit"
           >
             <span className="subtitle1__typography typography--white bold--typography">
               Login
             </span>
           </button>
-          <button className="button--sm button__outline button__outline--blue button__rounded--sm button__icon button__icon fullwidth-btn bold--typography">
-            <span className="subtitle1__typography typography--blue">
+          <button className="button--sm button__outline button__outline--green button__rounded--sm button__icon button__icon fullwidth-btn bold--typography">
+            <span className="subtitle1__typography typography--green">
               Create an account
             </span>
-            <span className="fa fa-arrow-right icon__typography typography--blue"></span>
+            <span className="fa fa-arrow-right icon__typography typography--green"></span>
           </button>
         </form>
       </div>
