@@ -22,12 +22,32 @@ export function History() {
     }
   };
 
+  const deleteAllHistory = async () => {
+    try {
+      const response = await axios.delete("/api/user/history/all", {
+        headers: { authorization: token },
+      });
+      console.log(response);
+      dispatch({ type: "SET_HISTORY", payload: response.data.history });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <div className="subheading">
         <span className="h5__typography typography--white bold--typography">
           Watch History {history.length}
         </span>
+        <button
+          className="button--sm button__outline button__outline--green button__rounded--md button__icon button__icon"
+          onClick={deleteAllHistory}
+        >
+          <span className="button__typography typography--green">
+            Clear history
+          </span>
+        </button>
       </div>
       {history.length > 0 ? (
         <div className="flex--column padding--sm--vertical">
