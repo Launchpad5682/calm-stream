@@ -5,7 +5,7 @@ import { useAuthProvider } from "../context/auth-context";
 export function PrivateRoute({ children }) {
   const { token } = useAuthProvider();
 
-  if (token !== null) {
+  if (token) {
     return children;
   }
 
