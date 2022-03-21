@@ -17,6 +17,7 @@
 ---
 
 Live link: [Link](https://calm-stream-app.netlify.app/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bb205176-4106-4970-9150-723d53c46ace/deploy-status)](https://app.netlify.com/sites/calm-stream-app/deploys)
 
 This folder contains the Mock Backend created for Video Library App. It contains different API end-points and database configuration for building Video Library; so that you can focus on building Frontend.
 
