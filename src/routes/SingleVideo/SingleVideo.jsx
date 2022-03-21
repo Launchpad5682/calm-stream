@@ -6,6 +6,7 @@ import {
   BsFillHandThumbsUpFill,
   BsStopwatchFill,
 } from "react-icons/bs";
+import { BiArrowBack } from "react-icons/bi";
 import { BadgeButton } from "../../components";
 import { Modal } from "../../components/Modal/Modal";
 import { useAuthProvider } from "../../context/auth-context";
@@ -13,11 +14,13 @@ import { useDataProvider } from "../../context/data-context";
 import { openPlaylist } from "../../utils";
 import "./SingleVideo.css";
 import { SingleVideoContainer } from "./SingleVideoContainer";
+import { useNavigate } from "react-router-dom";
 
 export function SingleVideo() {
   const { video, likedVideo, likeHandler } = SingleVideoContainer();
   const { modal, dispatch } = useDataProvider();
   const { token } = useAuthProvider();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (token && Object.entries(video).length !== 0) {
@@ -39,6 +42,9 @@ export function SingleVideo() {
     <>
       <div className="single__video--page">
         <div className="single__video--container">
+          <span className="h6__typography" onClick={() => navigate(-1)}>
+            <BiArrowBack />
+          </span>
           <div className="iframe--container">
             <iframe
               className="iframe--video"
