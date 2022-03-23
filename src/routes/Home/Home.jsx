@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { HomeCategoryCard } from "../../components/HomeCategoryCard/HomeCategoryCard";
 import { useDataProvider } from "../../context/data-context";
 import "./Home.css";
 
 export function Home() {
   const { categories } = useDataProvider();
+  const navigate = useNavigate();
 
   return (
     <main className="main__section">
@@ -23,7 +25,9 @@ export function Home() {
           </span>
           <button
             className="button--lg button__solid button--green button__rounded--lg"
-            onClick={() => {}}
+            onClick={() => {
+              navigate("/videos");
+            }}
           >
             <span className="button__typography typography--white">
               Explore <span className="fa fa-arrow-right"></span>
@@ -35,7 +39,7 @@ export function Home() {
         Categories
       </h4>
       <div className="grid-2-item padding--sm">
-        {categories?.categories?.map((category) => (
+        {categories?.map((category) => (
           <HomeCategoryCard category={category} key={category._id} />
         ))}
       </div>
