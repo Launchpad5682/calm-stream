@@ -16,7 +16,7 @@ export function LoginContainer() {
     if (token) {
       navigate("/videos");
     }
-  }, [token]);
+  }, [navigate, token]);
 
   const changeHandler = (event) => {
     const type = event.target.type;

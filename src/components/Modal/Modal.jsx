@@ -26,7 +26,7 @@ export function Modal() {
       };
     });
     setPlayListsCheck(temp);
-  }, [playlists]);
+  }, [playlists, selectedVideo._id]);
 
   const callUpdatedPlaylists = async () => {
     (async () => {

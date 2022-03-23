@@ -7,7 +7,7 @@ export function HomeCategoryCard({ category }) {
   return (
     <div className="category__card" onClick={() => {}}>
       <div className="category__image">
-        <img src={path} className="image__fit" />
+        <img src={path} className="image__fit" alt="category" />
       </div>
       <div className="category__card--overlay h4__typography typography--white">
         {displayName}

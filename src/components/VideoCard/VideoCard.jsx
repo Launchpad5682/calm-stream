@@ -14,7 +14,7 @@ import { openPlaylist } from "../../utils";
 
 export function VideoCard({ video }) {
   const { _id, title, creator, categoryName, thumbnail } = video;
- 
+
   const navigate = useNavigate();
 
   const videoCardClickHandler = () => {
@@ -24,9 +24,13 @@ export function VideoCard({ video }) {
   const { likedVideo, likeHandler } = useVideoLike(video);
   const { dispatch } = useDataProvider();
   return (
-    <div className="card__flexcolumn card__flexcolumn--lg card__border--green video--card">
+    <div className="card__flexcolumn card__flexcolumn--lg card__shadow--green video--card">
       <div className="item--image" onClick={videoCardClickHandler}>
-        <img src={thumbnail} className="image--fitwidth img--fitheight" />
+        <img
+          src={thumbnail}
+          className="image--fitwidth img--fitheight"
+          alt="thumbnail"
+        />
       </div>
       <div className="card--detail">
         <span className="h6__typography typography--white bold--typography">

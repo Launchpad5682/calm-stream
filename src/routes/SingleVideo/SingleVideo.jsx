@@ -36,13 +36,13 @@ export function SingleVideo() {
         dispatch({ type: "SET_HISTORY", payload: response.data.history });
       })();
     }
-  }, [video]);
+  }, [dispatch, token, video]);
 
   return (
     <>
       <div className="single__video--page">
         <div className="single__video--container">
-          <span className="h6__typography" onClick={() => navigate(-1)}>
+          <span className="h6__typography" onClick={() => navigate(-2)}>
             <BiArrowBack />
           </span>
           <div className="iframe--container">

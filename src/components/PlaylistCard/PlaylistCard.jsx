@@ -12,7 +12,7 @@ export function PlaylistCard({ playlist, deleteHandler }) {
   };
 
   return (
-    <div className="playlist--card padding--xs card__border--green">
+    <div className="playlist--card padding--xs card__shadow--green">
       <div
         className="playlist--card__detail padding--xs"
         onClick={() => playlistClickHandler(playlist)}

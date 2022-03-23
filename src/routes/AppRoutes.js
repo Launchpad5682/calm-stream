@@ -65,7 +65,8 @@ export function AppRoutes() {
         }
       })();
     }
-  }, [token]);
+    console.log("hululllljk");
+  }, [dispatch, token]);
 
   return (
     <Routes>

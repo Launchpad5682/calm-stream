@@ -17,7 +17,7 @@ export function PlayList() {
   useEffect(() => {
     (async () => {
       try {
-        const response = await axios.get(` /api/user/playlists/${id}`, {
+        const response = await axios.get(`/api/user/playlists/${id}`, {
           headers: { authorization: token },
         });
         const { data } = response;
@@ -27,7 +27,7 @@ export function PlayList() {
         console.error(error);
       }
     })();
-  }, []);
+  }, [id, token]);
 
   return (
     <>

@@ -31,13 +31,13 @@ export function VerticalCard({ video, clickHandler }) {
   };
 
   return (
-    <div className="vertical--card card__border--green">
+    <div className="vertical--card card__shadow--green">
       <div
         className="vertical__card--detail"
         onClick={() => videoCardClickHandler()}
       >
         <div className="vertical--thumbnail">
-          <img src={thumbnail} className="image__fit" />
+          <img src={thumbnail} className="image__fit" alt="thumbnail" />
         </div>
         <div className="vertical--card__detail padding--xs">
           <>
