@@ -22,8 +22,8 @@ export function Sidebar() {
         width > 1000
           ? "aside--grid padding--sm"
           : `drawer__container drawer__container--dark drawer--${
-            drawerState ? "on" : "off"
-          }`
+              drawerState ? "on" : "off"
+            }`
       }
     >
       <CustomNavLink

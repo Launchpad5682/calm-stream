@@ -1,0 +1,24 @@
+.modal__container--dark {
+  background-color: var(--dark-background-color);
+}
+
+.modal__container--body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-y: auto;
+}
+
+.create--new {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}

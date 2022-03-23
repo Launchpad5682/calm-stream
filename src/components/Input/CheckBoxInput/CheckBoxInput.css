@@ -1,0 +1,4 @@
+.checkbox__input--options {
+  display: flex;
+  gap: 5px;
+}
