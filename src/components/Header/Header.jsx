@@ -2,7 +2,7 @@ import React from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useDataProvider } from "../../context/data-context";
-import { BadgeButton } from "../";
+import { BadgeButton } from "../Buttons/BadgeButton";
 import "./Header.css";
 
 export function Header() {

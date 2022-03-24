@@ -4,7 +4,7 @@ import { BsX } from "react-icons/bs";
 import { useAuthProvider } from "../../context/auth-context";
 import { useDataProvider } from "../../context/data-context";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
-import { CheckBoxInput } from "../";
+import { CheckBoxInput } from "../Input/CheckBoxInput/CheckBoxInput";
 import "./Modal.css";
 
 export function Modal() {

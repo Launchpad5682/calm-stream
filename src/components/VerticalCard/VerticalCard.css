@@ -1,0 +1,30 @@
+.vertical--card {
+  position: relative;
+  display: flex;
+  height: 20rem;
+  width: 100%;
+  max-width: 100rem;
+  border-radius: 1rem;
+}
+
+.vertical__card--detail{
+  display: flex;
+}
+
+.vertical--thumbnail {
+  height: 100%;
+  aspect-ratio: 1;
+}
+
+.vertical--card__detail {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.delete--close {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
