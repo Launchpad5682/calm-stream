@@ -11,6 +11,7 @@ import { BadgeButton } from "../Buttons/BadgeButton";
 import { useVideoLike } from "../../hooks/useVideoLike";
 import { useDataProvider } from "../../context/data-context";
 import { openPlaylist } from "../../utils";
+import { useWatchLater } from "../../hooks/useWatchLater";
 
 export function VideoCard({ video }) {
   const { _id, title, creator, categoryName, thumbnail } = video;
@@ -22,6 +23,7 @@ export function VideoCard({ video }) {
   };
 
   const { likedVideo, likeHandler } = useVideoLike(video);
+  const { inWatchLater, watchLaterHandler } = useWatchLater(video);
   const { dispatch } = useDataProvider();
   return (
     <div className="card__flexcolumn card__flexcolumn--lg card__shadow--green video--card">
@@ -52,7 +54,7 @@ export function VideoCard({ video }) {
           >
             <BsFillCollectionPlayFill />
           </BadgeButton>
-          <BadgeButton active={false} clickHandler={() => {}}>
+          <BadgeButton active={inWatchLater} clickHandler={watchLaterHandler}>
             <BsStopwatchFill />
           </BadgeButton>
           <span className="subtitle1__typography typography--white category--tag h6__typography">

@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const unLikeVideo = async (video, token, dispatch) => {
-  console.info(video, token, dispatch);
   try {
     const response = await axios.delete(`/api/user/likes/${video._id}`, {
       headers: { authorization: token },

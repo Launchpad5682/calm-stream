@@ -16,6 +16,8 @@ export const reducer = (state, action) => {
       return { ...state, selectedVideo: action.payload };
     case "TOGGLE_DRAWER":
       return { ...state, drawerState: !state.drawerState };
+    case "SET_WATCHLATER":
+      return { ...state, watchlater: action.payload };
     default:
       return state;
   }
