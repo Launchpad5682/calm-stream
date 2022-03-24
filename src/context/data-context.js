@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useReducer } from "react";
 import { createContext, useContext } from "react";
-import { reducer } from "../reducer/reducer"
+import { reducer } from "../reducer/reducer";
 
 export const DataContext = createContext();
 export const useDataProvider = () => useContext(DataContext);
@@ -12,6 +12,7 @@ const initialState = {
   likes: [],
   playlists: [],
   history: [],
+  watchlater: [],
   modal: false,
   selectedVideo: null,
   drawerState: false,
@@ -25,6 +26,7 @@ export const DataProvider = ({ children }) => {
       history,
       likes,
       modal,
+      watchlater,
       selectedVideo,
       playlists,
       drawerState,
@@ -68,6 +70,7 @@ export const DataProvider = ({ children }) => {
     modal,
     selectedVideo,
     playlists,
+    watchlater,
     drawerState,
     dispatch,
   };
