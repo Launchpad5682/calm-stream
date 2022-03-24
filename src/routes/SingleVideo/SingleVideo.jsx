@@ -19,24 +19,32 @@ import { useNavigate } from "react-router-dom";
 export function SingleVideo() {
   const { video, likedVideo, likeHandler, inWatchLater, watchLaterHandler } =
     SingleVideoContainer();
-  const { modal, dispatch } = useDataProvider();
+  const { modal, history, dispatch } = useDataProvider();
   const { token } = useAuthProvider();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (token && Object.entries(video).length !== 0) {
+    if (
+      token &&
+      Object.entries(video).length !== 0 &&
+      !history.find((curr) => curr._id === video._id)
+    ) {
       (async () => {
-        const response = await axios.post(
-          "/api/user/history",
-          { video: video },
-          {
-            headers: { authorization: token },
-          }
-        );
-        console.info(response);
-        dispatch({ type: "SET_HISTORY", payload: response.data.history });
+        try {
+          const response = await axios.post(
+            "/api/user/history",
+            { video: video },
+            {
+              headers: { authorization: token },
+            }
+          );
+          dispatch({ type: "SET_HISTORY", payload: response.data.history });
+        } catch (error) {
+          console.info(error, "error from history");
+        }
       })();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, token, video]);
 
   return (
@@ -72,7 +80,7 @@ export function SingleVideo() {
               </BadgeButton>
               <BadgeButton
                 active={inWatchLater}
-                clickHandler={watchLaterHandler}
+                clickHandler={() => watchLaterHandler()}
               >
                 <BsStopwatchFill />
               </BadgeButton>

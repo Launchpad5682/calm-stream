@@ -27,7 +27,6 @@ export function AppRoutes() {
           const response = await axios.get("/api/user/likes", {
             headers: { authorization: token },
           });
-          console.info(response);
           const { data, status } = response;
           if (status === 200) {
             dispatch({ type: "SET_LIKED_VIDEOS", payload: data.likes });
@@ -41,7 +40,6 @@ export function AppRoutes() {
           const response = await axios.get("/api/user/history", {
             headers: { authorization: token },
           });
-          console.info(response);
           const { data, status } = response;
           if (status === 200) {
             dispatch({ type: "SET_HISTORY", payload: data.history });
@@ -55,7 +53,6 @@ export function AppRoutes() {
           const response = await axios.get("/api/user/playlists", {
             headers: { authorization: token },
           });
-          console.info(response);
           const { data, status } = response;
           if (status === 200) {
             dispatch({ type: "SET_PLAYLISTS", payload: data.playlists });

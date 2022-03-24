@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const removeFromWatchLater = async (video, token, dispatch) => {
   try {
-    const response = await axios.delete(`api/user/watchLater/${video._id}`, {
+    const response = await axios.delete(`/api/user/watchLater/${video._id}`, {
       headers: { authorization: token },
     });
     const { data, status } = response;
@@ -10,14 +10,14 @@ export const removeFromWatchLater = async (video, token, dispatch) => {
       dispatch({ type: "SET_WATCHLATER", payload: data.watchLater });
     }
   } catch (error) {
-    console.error(error);
+    console.error(error, "Error from remove from watch later");
   }
 };
 
 export const addToWatchLater = async (video, token, dispatch) => {
   try {
     const response = await axios.post(
-      "api/user/watchLater",
+      "/api/user/watchLater",
       {
         video: video,
       },
@@ -28,6 +28,6 @@ export const addToWatchLater = async (video, token, dispatch) => {
       dispatch({ type: "SET_WATCHLATER", payload: data.watchLater });
     }
   } catch (error) {
-    console.error(error);
+    console.error(error, "Error from add to watch later");
   }
 };
