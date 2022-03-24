@@ -9,7 +9,6 @@ import axios from "axios";
 export function VerticalCard({ video, clickHandler }) {
   const { _id, title, creator, thumbnail } = video;
   const { dispatch } = useDataProvider();
-  console.info(video);
 
   const { token } = useAuthProvider();
   const navigate = useNavigate();
