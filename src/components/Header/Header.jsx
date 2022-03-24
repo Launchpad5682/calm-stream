@@ -1,10 +1,23 @@
 import React from "react";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import { useDataProvider } from "../../context/data-context";
+import { BadgeButton } from "../";
 import "./Header.css";
 
 export function Header() {
+  const navigate = useNavigate();
+  const { drawerState, dispatch } = useDataProvider();
+
+  const drawerHandler = () => dispatch({ type: "TOGGLE_DRAWER" });
   return (
     <header className="header header--dark">
-      <span className="logo cursor--pointer" onClick={() => {}}>
+      <span
+        className="logo cursor--pointer"
+        onClick={() => {
+          navigate("/");
+        }}
+      >
         <img
           src="https://yifgzyyqlpgydlzwcsaj.supabase.in/storage/v1/object/sign/calm-stream/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJjYWxtLXN0cmVhbS9sb2dvLnBuZyIsImlhdCI6MTY0NzYwMDU0NywiZXhwIjoxOTYyOTYwNTQ3fQ.x5u9JALHIA9z3cD9AXOk8BzBQYIAAjqs546G3uqNKlg"
           alt=""
@@ -14,18 +27,13 @@ export function Header() {
           Calm Stream
         </h6>
       </span>
-      {/* <div className="search__container">
-        <input type="text" name="" id="" className="search__input" />
-        <span className="search__btn">
-          <BsSearch />
-        </span>
-      </div> */}
-
       <nav className="">
         <ul className="nav__list">
-          <button className="button--sm button__solid button--green button__rounded--lg">
-            <span className="button__typography typography--white">Logout</span>
-          </button>
+          <span className="drawer--utils">
+            <BadgeButton clickHandler={drawerHandler}>
+              {!drawerState ? <AiOutlineMenu /> : <AiOutlineClose />}
+            </BadgeButton>
+          </span>
         </ul>
       </nav>
     </header>

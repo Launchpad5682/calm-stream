@@ -1,0 +1,49 @@
+.aside--grid {
+  grid-area: aside;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  width: 35rem;
+}
+
+.drawer__container--dark {
+  background-color: var(--dark-background-color);
+}
+
+.filter--heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter__input--options {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.filter--elements {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}
+
+.close--clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.cursor--pointer {
+  cursor: pointer;
+}
+
+.navlink {
+  display: flex;
+  text-decoration: none;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
