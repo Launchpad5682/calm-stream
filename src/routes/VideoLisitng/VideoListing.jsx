@@ -5,13 +5,22 @@ import { useDataProvider } from "../../context/data-context";
 import "./VideoListing.css";
 
 export function VideoListing() {
-  const { videos, modal } = useDataProvider();
+  const { videos, modal, searchTerm } = useDataProvider();
+
+  const searchVideos = (videos, searchTerm) => {
+    const searchVideos = videos.filter((video) =>
+      video.title.toLowerCase().includes(searchTerm)
+    );
+    return searchVideos;
+  };
+
+  const filteredVideos = searchVideos(videos, searchTerm);
 
   return (
     <>
       <div className="subheading">
         <span className="h5__typography typography--white bold--typography">
-          Videos {videos.length}
+          Videos {filteredVideos.length}
         </span>
         <button
           className="button--sm button__nav button--red button__rounded--sm button__nav--black filter--btn"
@@ -20,9 +29,9 @@ export function VideoListing() {
           <span className="button__typography typography--black">Filter</span>
         </button>
       </div>
-      {videos.length > 0 ? (
+      {filteredVideos.length > 0 ? (
         <div className="grid-4-item padding--sm--vertical">
-          {videos?.map((video) => (
+          {filteredVideos?.map((video) => (
             <VideoCard video={video} key={video._id} />
           ))}
         </div>
