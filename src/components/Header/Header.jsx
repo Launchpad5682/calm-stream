@@ -3,6 +3,7 @@ import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useDataProvider } from "../../context/data-context";
 import { BadgeButton } from "../Buttons/BadgeButton";
+import { SearchBar } from "../SearchBar/SearchBar";
 import "./Header.css";
 
 export function Header() {
@@ -27,6 +28,7 @@ export function Header() {
           Calm Stream
         </h6>
       </span>
+      <SearchBar />
       <nav className="">
         <ul className="nav__list">
           <span className="drawer--utils">
