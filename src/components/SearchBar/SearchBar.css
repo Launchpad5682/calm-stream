@@ -14,15 +14,16 @@
   justify-content: center;
   align-items: center;
   color: var(--green-teal);
-  background-color: var(--green-teal-light);
   padding: 0 var(--padding-xs);
   border: solid 2px var(--green-teal);
+  border-left: none;
   border-radius: 0 var(--border-radius-search) var(--border-radius-search) 0;
 }
 
 .search__input {
   outline: none;
   border: solid 2px var(--green-teal);
+  border-right: none;
   width: 100%;
   color: var(--white);
   border-radius: var(--border-radius-search) 0 0 var(--border-radius-search);
