@@ -18,6 +18,8 @@ export const reducer = (state, action) => {
       return { ...state, drawerState: !state.drawerState };
     case "SET_WATCHLATER":
       return { ...state, watchlater: action.payload };
+    case "SET_SEARCH":
+      return { ...state, searchTerm: action.payload };
     default:
       return state;
   }
