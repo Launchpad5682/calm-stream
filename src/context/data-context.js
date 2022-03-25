@@ -16,6 +16,7 @@ const initialState = {
   modal: false,
   selectedVideo: null,
   drawerState: false,
+  searchTerm: "",
 };
 
 export const DataProvider = ({ children }) => {
@@ -29,6 +30,7 @@ export const DataProvider = ({ children }) => {
       watchlater,
       selectedVideo,
       playlists,
+      searchTerm,
       drawerState,
     },
     dispatch,
@@ -71,6 +73,7 @@ export const DataProvider = ({ children }) => {
     selectedVideo,
     playlists,
     watchlater,
+    searchTerm,
     drawerState,
     dispatch,
   };
