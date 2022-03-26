@@ -1,0 +1,21 @@
+.chip {
+  padding: 8px 15px;
+  height: 4rem;
+  font-size: 2rem;
+  font-weight: 800;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+
+.chip--active {
+  background-color: var(--white);
+  color: var(--dark-background-color);
+}
+
+.chip--base {
+  color: var(--white);
+}
+
+.chip--base:hover {
+  background-color: #1e3147;
+}
