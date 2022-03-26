@@ -59,6 +59,8 @@ export function SingleVideo() {
               className="iframe--video"
               src={`https://www.youtube.com/embed/${video._id}`}
               title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
             ></iframe>
           </div>
           <span className="typography--white h4__typography">
