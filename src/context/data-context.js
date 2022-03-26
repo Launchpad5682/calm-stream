@@ -17,6 +17,7 @@ const initialState = {
   selectedVideo: null,
   drawerState: false,
   searchTerm: "",
+  filterCategory: "",
 };
 
 export const DataProvider = ({ children }) => {
@@ -32,6 +33,7 @@ export const DataProvider = ({ children }) => {
       playlists,
       searchTerm,
       drawerState,
+      filterCategory,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -75,6 +77,7 @@ export const DataProvider = ({ children }) => {
     watchlater,
     searchTerm,
     drawerState,
+    filterCategory,
     dispatch,
   };
 

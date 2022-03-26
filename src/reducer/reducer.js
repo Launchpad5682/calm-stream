@@ -20,6 +20,8 @@ export const reducer = (state, action) => {
       return { ...state, watchlater: action.payload };
     case "SET_SEARCH":
       return { ...state, searchTerm: action.payload };
+    case "SET_CATEGORY":
+      return { ...state, filterCategory: action.payload };
     default:
       return state;
   }
