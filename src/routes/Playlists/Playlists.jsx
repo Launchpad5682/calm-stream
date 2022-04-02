@@ -26,7 +26,7 @@ export function Playlists() {
           ))}
         </div>
       ) : (
-        <div className="h6__typography">No Playlists to show</div>
+        <div className="h6__typography padding--xs">No Playlists to show</div>
       )}
     </>
   );

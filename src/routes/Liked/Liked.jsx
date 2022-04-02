@@ -26,7 +26,9 @@ export function Liked() {
           ))}
         </div>
       ) : (
-        <div className="h6__typography">No Liked videos to show</div>
+        <div className="h6__typography padding--xs">
+          No Liked videos to show
+        </div>
       )}
     </>
   );

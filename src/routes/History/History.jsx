@@ -60,7 +60,9 @@ export function History() {
           ))}
         </div>
       ) : (
-        <div className="h6__typography">No videos to show</div>
+        <div className="h6__typography padding--xs">
+          Nothing in watch history
+        </div>
       )}
     </>
   );
