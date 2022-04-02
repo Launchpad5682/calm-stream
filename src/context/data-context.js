@@ -18,6 +18,15 @@ const initialState = {
   drawerState: false,
   searchTerm: "",
   filterCategory: "",
+  loading: {
+    videos: false,
+    history: false,
+    playlists: false,
+    playlist: false,
+    liked: false,
+    watchlater: false,
+  },
+  alert: { message: null, active: true, color: "green" },
 };
 
 export const DataProvider = ({ children }) => {
@@ -34,6 +43,8 @@ export const DataProvider = ({ children }) => {
       searchTerm,
       drawerState,
       filterCategory,
+      loading,
+      alert,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -41,12 +52,16 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
+        dispatch({ type: "TOGGLE_LOADING", payload: { videos: true } });
         const response = await axios.get("/api/videos");
         // console.log(response);
         const { data, status } = response;
         if (status === 200) {
           dispatch({ type: "SET_VIDEOS", payload: data.videos });
         }
+        setTimeout(() => {
+          dispatch({ type: "TOGGLE_LOADING", payload: { videos: false } });
+        }, 2000);
       } catch (error) {
         console.error(error);
       }
@@ -78,6 +93,8 @@ export const DataProvider = ({ children }) => {
     searchTerm,
     drawerState,
     filterCategory,
+    loading,
+    alert,
     dispatch,
   };
 
