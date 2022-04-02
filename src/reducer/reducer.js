@@ -22,6 +22,22 @@ export const reducer = (state, action) => {
       return { ...state, searchTerm: action.payload };
     case "SET_CATEGORY":
       return { ...state, filterCategory: action.payload };
+    case "TOGGLE_LOADING":
+      return { ...state, loading: { ...state.loading, ...action.payload } };
+    case "ACTIVATE_ALERT":
+      return {
+        ...state,
+        alert: {
+          message: action.payload.message,
+          active: true,
+          color: action.payload.color,
+        },
+      };
+    case "DEACTIVATE_ALERT":
+      return {
+        ...state,
+        alert: { message: null, active: false, color: "green" },
+      };
     default:
       return state;
   }
