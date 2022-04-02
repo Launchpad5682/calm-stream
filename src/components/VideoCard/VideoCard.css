@@ -1,6 +1,7 @@
 .video--card {
   height: 30rem;
   max-height: 30rem;
+  margin: 0 auto;
 }
 
 .item--image {

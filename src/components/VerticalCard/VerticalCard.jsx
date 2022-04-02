@@ -5,6 +5,7 @@ import { useAuthProvider } from "../../context/auth-context";
 import { useNavigate } from "react-router-dom";
 import { useDataProvider } from "../../context/data-context";
 import axios from "axios";
+import { ACTION_TYPE } from "../../utils";
 
 export function VerticalCard({ video, clickHandler }) {
   const { _id, title, creator, thumbnail } = video;
@@ -24,7 +25,10 @@ export function VerticalCard({ video, clickHandler }) {
             headers: { authorization: token },
           }
         );
-        dispatch({ type: "SET_HISTORY", payload: response.data.history });
+        dispatch({
+          type: ACTION_TYPE.SET_HISTORY,
+          payload: response.data.history,
+        });
       })();
     }
   };

@@ -26,8 +26,18 @@
 
 .subheading {
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem 1.2rem;
+}
+
+.chip--container {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  height: fit-content;
 }
 
 .filter--btn {

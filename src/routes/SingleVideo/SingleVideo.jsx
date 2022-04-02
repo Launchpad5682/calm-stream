@@ -11,7 +11,7 @@ import { BadgeButton } from "../../components";
 import { Modal } from "../../components/Modal/Modal";
 import { useAuthProvider } from "../../context/auth-context";
 import { useDataProvider } from "../../context/data-context";
-import { openPlaylist } from "../../utils";
+import { ACTION_TYPE, openPlaylist } from "../../utils";
 import "./SingleVideo.css";
 import { SingleVideoContainer } from "./SingleVideoContainer";
 import { useNavigate } from "react-router-dom";
@@ -38,7 +38,10 @@ export function SingleVideo() {
               headers: { authorization: token },
             }
           );
-          dispatch({ type: "SET_HISTORY", payload: response.data.history });
+          dispatch({
+            type: ACTION_TYPE.SET_HISTORY,
+            payload: response.data.history,
+          });
         } catch (error) {
           console.info(error, "error from history");
         }
@@ -59,6 +62,8 @@ export function SingleVideo() {
               className="iframe--video"
               src={`https://www.youtube.com/embed/${video._id}`}
               title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
             ></iframe>
           </div>
           <span className="typography--white h4__typography">

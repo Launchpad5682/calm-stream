@@ -3,6 +3,7 @@ import React from "react";
 import { VerticalCard } from "../../components/VerticalCard/VerticalCard";
 import { useAuthProvider } from "../../context/auth-context";
 import { useDataProvider } from "../../context/data-context";
+import { ACTION_TYPE } from "../../utils";
 
 export function History() {
   const { history } = useDataProvider();
@@ -16,7 +17,10 @@ export function History() {
         headers: { authorization: token },
       });
       console.log(response);
-      dispatch({ type: "SET_HISTORY", payload: response.data.history });
+      dispatch({
+        type: ACTION_TYPE.SET_HISTORY,
+        payload: response.data.history,
+      });
     } catch (error) {
       console.error(error);
     }
@@ -28,7 +32,10 @@ export function History() {
         headers: { authorization: token },
       });
       console.log(response);
-      dispatch({ type: "SET_HISTORY", payload: response.data.history });
+      dispatch({
+        type: ACTION_TYPE.SET_HISTORY,
+        payload: response.data.history,
+      });
     } catch (error) {
       console.error(error);
     }
@@ -60,7 +67,9 @@ export function History() {
           ))}
         </div>
       ) : (
-        <div className="h6__typography">No videos to show</div>
+        <div className="h6__typography padding--xs">
+          Nothing in watch history
+        </div>
       )}
     </>
   );

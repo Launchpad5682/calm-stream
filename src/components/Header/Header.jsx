@@ -2,14 +2,16 @@ import React from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useDataProvider } from "../../context/data-context";
+import { ACTION_TYPE } from "../../utils";
 import { BadgeButton } from "../Buttons/BadgeButton";
+import { SearchBar } from "../SearchBar/SearchBar";
 import "./Header.css";
 
 export function Header() {
   const navigate = useNavigate();
   const { drawerState, dispatch } = useDataProvider();
 
-  const drawerHandler = () => dispatch({ type: "TOGGLE_DRAWER" });
+  const drawerHandler = () => dispatch({ type: ACTION_TYPE.TOGGLE_DRAWER });
   return (
     <header className="header header--dark">
       <span
@@ -27,6 +29,7 @@ export function Header() {
           Calm Stream
         </h6>
       </span>
+      <SearchBar />
       <nav className="">
         <ul className="nav__list">
           <span className="drawer--utils">

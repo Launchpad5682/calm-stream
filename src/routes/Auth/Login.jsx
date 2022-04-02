@@ -4,7 +4,7 @@ import "./Auth.css";
 import { LoginContainer } from "./LoginContainer";
 
 export function Login() {
-  const { form, loginHandler, changeHandler } = LoginContainer();
+  const { form, loading, loginHandler, changeHandler } = LoginContainer();
 
   return (
     <main className="main__form--section">
@@ -56,9 +56,10 @@ export function Login() {
           <button
             className="button--sm button__solid button--green button__rounded--md fullwidth-btn bold--typography"
             type="submit"
+            disabled={loading}
           >
             <span className="subtitle1__typography typography--white bold--typography">
-              Login
+              {loading ? "Logging in...." : "Login"}
             </span>
           </button>
           <button className="button--sm button__outline button__outline--green button__rounded--sm button__icon button__icon fullwidth-btn bold--typography">

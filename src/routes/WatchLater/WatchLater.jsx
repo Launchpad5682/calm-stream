@@ -1,10 +1,12 @@
 import React from "react";
 import { VerticalCard } from "../../components";
+import { useAuthProvider } from "../../context/auth-context";
 import { useDataProvider } from "../../context/data-context";
+import { removeFromWatchLater } from "../../utils";
 
 export function WatchLater() {
-  const { watchlater } = useDataProvider();
-
+  const { watchlater, dispatch } = useDataProvider();
+  const { token } = useAuthProvider();
   return (
     <>
       <div className="subheading">
@@ -15,11 +17,15 @@ export function WatchLater() {
       {watchlater.length > 0 ? (
         <div className="flex--column padding--sm--vertical">
           {watchlater?.map((video) => (
-            <VerticalCard video={video} key={video._id} />
+            <VerticalCard
+              video={video}
+              key={video._id}
+              clickHandler={() => removeFromWatchLater(video, token, dispatch)}
+            />
           ))}
         </div>
       ) : (
-        <div className="h6__typography">No Playlists to show</div>
+        <div className="h6__typography padding--xs">Nothing in watch later</div>
       )}
     </>
   );

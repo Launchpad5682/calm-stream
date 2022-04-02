@@ -9,12 +9,13 @@ import { History } from "./History/History";
 import { Playlists } from "./Playlists/Playlists";
 import { Liked } from "./Liked/Liked";
 import { WatchLater } from "./WatchLater/WatchLater";
-import { PlaylistContainer } from "./PlayListContainer/PlayListContainer";
+import { Main } from "./Main/Main";
 import { PlayList } from "./PlayList/PlayList";
 import { useAuthProvider } from "../context/auth-context";
 import { useDataProvider } from "../context/data-context";
 import axios from "axios";
 import { PrivateRoute } from "../helper/PrivateRoute";
+import { ACTION_TYPE } from "../utils";
 
 export function AppRoutes() {
   const { token } = useAuthProvider();
@@ -29,7 +30,10 @@ export function AppRoutes() {
           });
           const { data, status } = response;
           if (status === 200) {
-            dispatch({ type: "SET_LIKED_VIDEOS", payload: data.likes });
+            dispatch({
+              type: ACTION_TYPE.SET_LIKED_VIDEOS,
+              payload: data.likes,
+            });
           }
         } catch (error) {
           console.error("Error while fetching liked videos", error);
@@ -42,7 +46,7 @@ export function AppRoutes() {
           });
           const { data, status } = response;
           if (status === 200) {
-            dispatch({ type: "SET_HISTORY", payload: data.history });
+            dispatch({ type: ACTION_TYPE.SET_HISTORY, payload: data.history });
           }
         } catch (error) {
           console.error("Error while fetching history videos", error);
@@ -55,7 +59,10 @@ export function AppRoutes() {
           });
           const { data, status } = response;
           if (status === 200) {
-            dispatch({ type: "SET_PLAYLISTS", payload: data.playlists });
+            dispatch({
+              type: ACTION_TYPE.SET_PLAYLISTS,
+              payload: data.playlists,
+            });
           }
         } catch (error) {
           console.error("Error while fetching playlists", error);
@@ -67,50 +74,17 @@ export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="/" element={<PlaylistContainer />}>
+      <Route path="/" element={<Main />}>
         <Route path="videos" element={<VideoListing />} />
         <Route path="videos/:videoID" element={<SingleVideo />} />
         <Route path="login" element={<Login />} />
-        <Route
-          path="liked-videos"
-          element={
-            <PrivateRoute>
-              <Liked />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="playlists"
-          element={
-            <PrivateRoute>
-              <Playlists />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="playlists/:playlistID"
-          element={
-            <PrivateRoute>
-              <PlayList />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="history"
-          element={
-            <PrivateRoute>
-              <History />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="watch-later"
-          element={
-            <PrivateRoute>
-              <WatchLater />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/" element={<PrivateRoute />}>
+          <Route path="liked-videos" element={<Liked />} />
+          <Route path="playlists" element={<Playlists />} />
+          <Route path="playlists/:playlistID" element={<PlayList />} />
+          <Route path="history" element={<History />} />
+          <Route path="watch-later" element={<WatchLater />} />
+        </Route>
       </Route>
       <Route path="/api/mockman" element={<MockmanEs />} />
     </Routes>

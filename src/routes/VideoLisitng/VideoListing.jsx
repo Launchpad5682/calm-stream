@@ -1,33 +1,38 @@
 import React from "react";
 import { VideoCard } from "../../components";
+import { Chip } from "../../components/Chip/Chip";
+import { Loader } from "../../components/Loader/Loader";
 import { Modal } from "../../components/Modal/Modal";
-import { useDataProvider } from "../../context/data-context";
 import "./VideoListing.css";
+import { VideoListingContainer } from "./VideoListingContainer";
 
 export function VideoListing() {
-  const { videos, modal } = useDataProvider();
+  const { modal, categories, loading, filteredVideos } =
+    VideoListingContainer();
 
   return (
     <>
       <div className="subheading">
         <span className="h5__typography typography--white bold--typography">
-          Videos {videos.length}
+          Videos {!loading.videos && filteredVideos.length}
         </span>
-        <button
-          className="button--sm button__nav button--red button__rounded--sm button__nav--black filter--btn"
-          id="open--filter"
-        >
-          <span className="button__typography typography--black">Filter</span>
-        </button>
+        <div className="chip--container">
+          <Chip value="all">All</Chip>
+          {categories?.map((category) => (
+            <Chip value={category.categoryName}>{category.displayName}</Chip>
+          ))}
+        </div>
       </div>
-      {videos.length > 0 ? (
-        <div className="grid-4-item padding--sm--vertical">
-          {videos?.map((video) => (
+      {loading.videos ? (
+        <Loader />
+      ) : filteredVideos.length > 0 ? (
+        <div className="main--grid grid-4-item padding--sm--vertical">
+          {filteredVideos?.map((video) => (
             <VideoCard video={video} key={video._id} />
           ))}
         </div>
       ) : (
-        <div className="h6__typography">No videos to show</div>
+        <div className="h6__typography padding--xs">No videos to show</div>
       )}
       {modal && <Modal />}
     </>

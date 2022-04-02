@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ACTION_TYPE } from "./constants";
 
 export const removeFromWatchLater = async (video, token, dispatch) => {
   try {
@@ -7,7 +8,7 @@ export const removeFromWatchLater = async (video, token, dispatch) => {
     });
     const { data, status } = response;
     if (status === 200) {
-      dispatch({ type: "SET_WATCHLATER", payload: data.watchLater });
+      dispatch({ type: ACTION_TYPE.SET_WATCHLATER, payload: data.watchLater });
     }
   } catch (error) {
     console.error(error, "Error from remove from watch later");
@@ -25,7 +26,7 @@ export const addToWatchLater = async (video, token, dispatch) => {
     );
     const { data, status } = response;
     if (status === 201) {
-      dispatch({ type: "SET_WATCHLATER", payload: data.watchLater });
+      dispatch({ type: ACTION_TYPE.SET_WATCHLATER, payload: data.watchLater });
     }
   } catch (error) {
     console.error(error, "Error from add to watch later");
