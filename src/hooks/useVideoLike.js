@@ -22,16 +22,8 @@ export function useVideoLike(video) {
     if (isAuthenticated) {
       if (likedVideo) {
         unLikeVideo(video, token, dispatch);
-        dispatch({
-          type: ACTION_TYPE.ACTIVATE_ALERT,
-          payload: { message: "Video removed from liked", color: "red" },
-        });
       } else {
         likeVideo(video, token, dispatch);
-        dispatch({
-          type: ACTION_TYPE.ACTIVATE_ALERT,
-          payload: { message: "Video added to liked", color: "green" },
-        });
       }
     } else {
       dispatch({
