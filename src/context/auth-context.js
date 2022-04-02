@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
         dispatch({
           type: ACTION_TYPE.ACTIVATE_ALERT,
-          payload: { message: "Logged In successful", color: "green" },
+          payload: { message: "Log In successful", color: "green" },
         });
       }
     } catch (err) {
