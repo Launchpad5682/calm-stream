@@ -25,7 +25,7 @@ export function WatchLater() {
           ))}
         </div>
       ) : (
-        <div className="h6__typography">No Videos in watch later</div>
+        <div className="h6__typography padding--xs">Nothing in watch later</div>
       )}
     </>
   );
