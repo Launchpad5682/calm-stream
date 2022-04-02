@@ -14,7 +14,7 @@ export function PlayList() {
   const [videos, setVideos] = useState([]);
   const { token } = useAuthProvider();
   const id = pathname.split("/")[2];
-  
+
   useEffect(() => {
     (async () => {
       try {
@@ -56,7 +56,7 @@ export function PlayList() {
           ))}
         </div>
       ) : (
-        <div className="h6__typography">No videos to show</div>
+        <div className="h6__typography padding--xs">No videos to show</div>
       )}
       {modal && <Modal />}
     </>
