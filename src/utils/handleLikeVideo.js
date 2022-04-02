@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ACTION_TYPE } from "./constants";
 
 export const unLikeVideo = async (video, token, dispatch) => {
   try {
@@ -7,7 +8,7 @@ export const unLikeVideo = async (video, token, dispatch) => {
     });
     const { data, status } = response;
     if (status === 200) {
-      dispatch({ type: "SET_LIKED_VIDEOS", payload: data.likes });
+      dispatch({ type: ACTION_TYPE.SET_LIKED_VIDEOS, payload: data.likes });
     }
   } catch (error) {
     console.error(error);
@@ -23,7 +24,7 @@ export const likeVideo = async (video, token, dispatch) => {
     );
     const { data, status } = response;
     if (status === 201) {
-      dispatch({ type: "SET_LIKED_VIDEOS", payload: data.likes });
+      dispatch({ type: ACTION_TYPE.SET_LIKED_VIDEOS, payload: data.likes });
     }
   } catch (error) {
     console.error(error);

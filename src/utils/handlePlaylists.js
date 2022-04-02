@@ -1,8 +1,9 @@
 import axios from "axios";
+import { ACTION_TYPE } from "./constants";
 
 export const openPlaylist = (video, dispatch) => {
-  dispatch({ type: "SELECTED_VIDEO", payload: video });
-  dispatch({ type: "TOGGLE_MODAL" });
+  dispatch({ type: ACTION_TYPE.SELECTED_VIDEO, payload: video });
+  dispatch({ type: ACTION_TYPE.TOGGLE_MODAL });
 };
 
 export const deletePlaylist = async (playlist, token, dispatch) => {
@@ -13,7 +14,7 @@ export const deletePlaylist = async (playlist, token, dispatch) => {
       { headers: { authorization: token } }
     );
     const { data } = response;
-    dispatch({ type: "SET_PLAYLISTS", payload: data.playlists });
+    dispatch({ type: ACTION_TYPE.SET_PLAYLISTS, payload: data.playlists });
   } catch (error) {
     console.error(error);
   }

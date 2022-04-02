@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { IoMdClose } from "react-icons/io";
 import { useDataProvider } from "../../context/data-context";
+import { ACTION_TYPE } from "../../utils";
 import "./Alert.css";
 
 /**
@@ -14,7 +15,8 @@ export function Alert() {
   } = useDataProvider();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const deactivateAlert = () => dispatch({ type: "DEACTIVATE_ALERT" });
+  const deactivateAlert = () =>
+    dispatch({ type: ACTION_TYPE.DEACTIVATE_ALERT });
 
   useEffect(() => {
     if (active) {

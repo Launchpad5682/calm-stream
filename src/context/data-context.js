@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useReducer } from "react";
 import { createContext, useContext } from "react";
 import { reducer } from "../reducer/reducer";
+import { ACTION_TYPE } from "../utils";
 
 export const DataContext = createContext();
 export const useDataProvider = () => useContext(DataContext);
@@ -52,15 +53,21 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
-        dispatch({ type: "TOGGLE_LOADING", payload: { videos: true } });
+        dispatch({
+          type: ACTION_TYPE.TOGGLE_LOADING,
+          payload: { videos: true },
+        });
         const response = await axios.get("/api/videos");
         // console.log(response);
         const { data, status } = response;
         if (status === 200) {
-          dispatch({ type: "SET_VIDEOS", payload: data.videos });
+          dispatch({ type: ACTION_TYPE.SET_VIDEOS, payload: data.videos });
         }
         setTimeout(() => {
-          dispatch({ type: "TOGGLE_LOADING", payload: { videos: false } });
+          dispatch({
+            type: ACTION_TYPE.TOGGLE_LOADING,
+            payload: { videos: false },
+          });
         }, 2000);
       } catch (error) {
         console.error(error);
@@ -73,7 +80,10 @@ export const DataProvider = ({ children }) => {
         // console.log(response);
         const { data, status } = response;
         if (status === 200) {
-          dispatch({ type: "SET_CATEGORIES", payload: data.categories });
+          dispatch({
+            type: ACTION_TYPE.SET_CATEGORIES,
+            payload: data.categories,
+          });
         }
       } catch (error) {
         console.error(error);

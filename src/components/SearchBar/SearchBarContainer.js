@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDataProvider } from "../../context/data-context";
+import { ACTION_TYPE } from "../../utils";
 
 export function SearchBarContainer() {
   const [searchInput, setSearchInput] = useState("");
@@ -10,16 +11,19 @@ export function SearchBarContainer() {
 
   const changeHandler = (event) => {
     if (event.target.value === "")
-      dispatch({ type: "SET_SEARCH", payload: event.target.value });
+      dispatch({ type: ACTION_TYPE.SET_SEARCH, payload: event.target.value });
     setSearchInput(event.target.value);
   };
 
   const searchHandler = (event) => {
     if (event.key === "Enter") {
-      dispatch({ type: "SET_SEARCH", payload: event.target.value });
-      dispatch({ type: "TOGGLE_LOADING", payload: { videos: true } });
+      dispatch({ type: ACTION_TYPE.SET_SEARCH, payload: event.target.value });
+      dispatch({ type: ACTION_TYPE.TOGGLE_LOADING, payload: { videos: true } });
       setTimeout(() => {
-        dispatch({ type: "TOGGLE_LOADING", payload: { videos: false } });
+        dispatch({
+          type: ACTION_TYPE.TOGGLE_LOADING,
+          payload: { videos: false },
+        });
       }, 1000);
       if (pathname !== "/videos") {
         navigate("/videos");
@@ -28,10 +32,13 @@ export function SearchBarContainer() {
   };
 
   const searchClickHandler = () => {
-    dispatch({ type: "SET_SEARCH", payload: searchInput });
-    dispatch({ type: "TOGGLE_LOADING", payload: { videos: true } });
+    dispatch({ type: ACTION_TYPE.SET_SEARCH, payload: searchInput });
+    dispatch({ type: ACTION_TYPE.TOGGLE_LOADING, payload: { videos: true } });
     setTimeout(() => {
-      dispatch({ type: "TOGGLE_LOADING", payload: { videos: false } });
+      dispatch({
+        type: ACTION_TYPE.TOGGLE_LOADING,
+        payload: { videos: false },
+      });
     }, 1000);
     if (pathname !== "/videos") {
       navigate("/videos");
@@ -39,7 +46,7 @@ export function SearchBarContainer() {
   };
 
   const clearHandler = () => {
-    dispatch({ type: "SET_SEARCH", payload: "" });
+    dispatch({ type: ACTION_TYPE.SET_SEARCH, payload: "" });
     setSearchInput("");
   };
 

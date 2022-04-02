@@ -4,6 +4,7 @@ import { BsX } from "react-icons/bs";
 import { useAuthProvider } from "../../context/auth-context";
 import { useDataProvider } from "../../context/data-context";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import { ACTION_TYPE } from "../../utils";
 import { CheckBoxInput } from "../Input/CheckBoxInput/CheckBoxInput";
 import "./Modal.css";
 
@@ -36,7 +37,10 @@ export function Modal() {
         });
         const { data, status } = response;
         if (status === 200) {
-          dispatch({ type: "SET_PLAYLISTS", payload: data.playlists });
+          dispatch({
+            type: ACTION_TYPE.SET_PLAYLISTS,
+            payload: data.playlists,
+          });
         }
       } catch (error) {
         console.error("Error while fetching playlists", error);
@@ -45,8 +49,8 @@ export function Modal() {
   };
 
   const modalOff = () => {
-    dispatch({ type: "TOGGLE_MODAL" });
-    dispatch({ type: "SELECTED_VIDEO", payload: null });
+    dispatch({ type: ACTION_TYPE.TOGGLE_MODAL });
+    dispatch({ type: ACTION_TYPE.SELECTED_VIDEO, payload: null });
   };
 
   useOnClickOutside(modalRef, modalOff);
@@ -66,7 +70,10 @@ export function Modal() {
       );
       console.log(response.data.playlists);
       setPlaylistName("");
-      dispatch({ type: "SET_PLAYLISTS", payload: response.data.playlists });
+      dispatch({
+        type: ACTION_TYPE.SET_PLAYLISTS,
+        payload: response.data.playlists,
+      });
     } catch (error) {
       console.error(error);
     }
