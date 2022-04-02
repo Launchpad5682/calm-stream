@@ -1,12 +1,12 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { useAuthProvider } from "../context/auth-context";
 
-export function PrivateRoute({ children }) {
+export function PrivateRoute() {
   const { token } = useAuthProvider();
 
   if (token) {
-    return children;
+    return <Outlet />;
   }
 
   return <Navigate to="/login" />;

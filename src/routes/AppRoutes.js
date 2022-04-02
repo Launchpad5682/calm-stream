@@ -71,46 +71,13 @@ export function AppRoutes() {
         <Route path="videos" element={<VideoListing />} />
         <Route path="videos/:videoID" element={<SingleVideo />} />
         <Route path="login" element={<Login />} />
-        <Route
-          path="liked-videos"
-          element={
-            <PrivateRoute>
-              <Liked />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="playlists"
-          element={
-            <PrivateRoute>
-              <Playlists />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="playlists/:playlistID"
-          element={
-            <PrivateRoute>
-              <PlayList />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="history"
-          element={
-            <PrivateRoute>
-              <History />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="watch-later"
-          element={
-            <PrivateRoute>
-              <WatchLater />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/" element={<PrivateRoute />}>
+          <Route path="liked-videos" element={<Liked />} />
+          <Route path="playlists" element={<Playlists />} />
+          <Route path="playlists/:playlistID" element={<PlayList />} />
+          <Route path="history" element={<History />} />
+          <Route path="watch-later" element={<WatchLater />} />
+        </Route>
       </Route>
       <Route path="/api/mockman" element={<MockmanEs />} />
     </Routes>
