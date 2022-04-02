@@ -12,12 +12,14 @@ export const AuthProvider = ({ children }) => {
   const localStorageUser = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(localStorageUser?.user);
   const [token, setToken] = useState(localStorageToken?.token);
+  const [loading, setLoading] = useState(false);
 
   const login = async (
     email = "adarshbalika@gmail.com",
     password = "adarshBalika123"
   ) => {
     try {
+      setLoading(true);
       const response = await axios.post("/api/auth/login", {
         email,
         password,
@@ -31,12 +33,14 @@ export const AuthProvider = ({ children }) => {
         setUser(foundUser);
         localStorage.setItem("login", JSON.stringify({ token: encodedToken }));
         localStorage.setItem("user", JSON.stringify({ user: foundUser }));
+        setLoading(false);
       }
     } catch (err) {
       console.error(err);
+      setLoading(false);
     }
   };
 
-  const value = { user, token, login };
+  const value = { user, token, login, loading };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
