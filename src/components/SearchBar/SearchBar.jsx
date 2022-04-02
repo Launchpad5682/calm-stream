@@ -1,42 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { BsSearch, BsXLg } from "react-icons/bs";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useDataProvider } from "../../context/data-context";
-// import { useDebounce } from "../../hooks/useDebounce";
 import "./SearchBar.css";
+import { SearchBarContainer } from "./SearchBarContainer";
 
 export function SearchBar() {
-  const [searchInput, setSearchInput] = useState("");
-  const { dispatch } = useDataProvider();
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
-
-  const changeHandler = (event) => {
-    if (event.target.value === "")
-      dispatch({ type: "SET_SEARCH", payload: event.target.value });
-    setSearchInput(event.target.value);
-  };
-
-  const searchHandler = (event) => {
-    if (event.key === "Enter") {
-      dispatch({ type: "SET_SEARCH", payload: event.target.value });
-      if (pathname !== "/videos") {
-        navigate("/videos");
-      }
-    }
-  };
-
-  const searchClickHandler = () => {
-    dispatch({ type: "SET_SEARCH", payload: searchInput });
-    if (pathname !== "/videos") {
-      navigate("/videos");
-    }
-  };
-
-  const clearHandler = () => {
-    dispatch({ type: "SET_SEARCH", payload: "" });
-    setSearchInput("");
-  };
+  const {
+    searchInput,
+    changeHandler,
+    searchHandler,
+    clearHandler,
+    searchClickHandler,
+  } = SearchBarContainer();
 
   return (
     <div className="search__container">
