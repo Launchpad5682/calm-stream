@@ -27,7 +27,7 @@ const initialState = {
     liked: false,
     watchlater: false,
   },
-  alert: { message: null, active: true, color: "green" },
+  alert: { message: null, active: false, color: "green" },
 };
 
 export const DataProvider = ({ children }) => {
