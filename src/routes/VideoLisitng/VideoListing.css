@@ -30,6 +30,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 2rem;
+  padding: 1rem 1.2rem;
 }
 
 .chip--container {
