@@ -3,8 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { useAuthProvider } from "../../context/auth-context";
 
 export function LoginContainer() {
-  const [form, setForm] = useState({ email: "", password: "" });
-  const { login, token } = useAuthProvider();
+  const [form, setForm] = useState({
+    email: "adarshbalika@gmail.com",
+    password: "adarshBalika123",
+  });
+
+  const { login, token, loading } = useAuthProvider();
   const navigate = useNavigate();
 
   const loginHandler = (event) => {
@@ -25,5 +29,5 @@ export function LoginContainer() {
     }
     setForm((prev) => ({ ...prev, password: event.target.password }));
   };
-  return { form, loginHandler, changeHandler };
+  return { form, loginHandler, changeHandler, loading };
 }
