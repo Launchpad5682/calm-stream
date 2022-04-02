@@ -10,21 +10,34 @@ import { useNavigate } from "react-router-dom";
 import { BadgeButton } from "../Buttons/BadgeButton";
 import { useVideoLike } from "../../hooks/useVideoLike";
 import { useDataProvider } from "../../context/data-context";
-import { openPlaylist } from "../../utils";
+import { ACTION_TYPE, openPlaylist } from "../../utils";
 import { useWatchLater } from "../../hooks/useWatchLater";
+import { useAuth } from "../../hooks/useAuth";
 
 export function VideoCard({ video }) {
   const { _id, title, creator, categoryName, thumbnail } = video;
+  const { isAuthenticated } = useAuth();
 
   const navigate = useNavigate();
-
   const videoCardClickHandler = () => {
     navigate(`/videos/${_id}`);
   };
 
+  const { dispatch } = useDataProvider();
   const { likedVideo, likeHandler } = useVideoLike(video);
   const { inWatchLater, watchLaterHandler } = useWatchLater(video);
-  const { dispatch } = useDataProvider();
+
+  const playlistHandler = () => {
+    if (isAuthenticated) {
+      openPlaylist(video, dispatch);
+    } else {
+      dispatch({
+        type: ACTION_TYPE.ACTIVATE_ALERT,
+        payload: { message: "You need to login", color: "green" },
+      });
+    }
+  };
+
   return (
     <div className="card__flexcolumn card__flexcolumn--lg card__shadow--green video--card">
       <div className="item--image" onClick={videoCardClickHandler}>
@@ -48,10 +61,7 @@ export function VideoCard({ video }) {
           <BadgeButton active={false} clickHandler={() => {}}>
             <BsFillHandThumbsDownFill />
           </BadgeButton>
-          <BadgeButton
-            active={false}
-            clickHandler={() => openPlaylist(video, dispatch)}
-          >
+          <BadgeButton active={false} clickHandler={playlistHandler}>
             <BsFillCollectionPlayFill />
           </BadgeButton>
           <BadgeButton active={inWatchLater} clickHandler={watchLaterHandler}>
