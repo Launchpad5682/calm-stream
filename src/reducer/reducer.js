@@ -1,30 +1,32 @@
+import { ACTION_TYPE } from "../utils";
+
 export const reducer = (state, action) => {
   switch (action.type) {
-    case "SET_CATEGORIES":
+    case ACTION_TYPE.SET_CATEGORIES:
       return { ...state, categories: action.payload };
-    case "SET_VIDEOS":
+    case ACTION_TYPE.SET_VIDEOS:
       return { ...state, videos: action.payload };
-    case "SET_LIKED_VIDEOS":
+    case ACTION_TYPE.SET_LIKED_VIDEOS:
       return { ...state, likes: action.payload };
-    case "SET_PLAYLISTS":
+    case ACTION_TYPE.SET_PLAYLISTS:
       return { ...state, playlists: action.payload };
-    case "SET_HISTORY":
+    case ACTION_TYPE.SET_HISTORY:
       return { ...state, history: action.payload };
-    case "TOGGLE_MODAL":
+    case ACTION_TYPE.TOGGLE_MODAL:
       return { ...state, modal: !state.modal };
-    case "SELECTED_VIDEO":
+    case ACTION_TYPE.SELECTED_VIDEO:
       return { ...state, selectedVideo: action.payload };
-    case "TOGGLE_DRAWER":
+    case ACTION_TYPE.TOGGLE_DRAWER:
       return { ...state, drawerState: !state.drawerState };
-    case "SET_WATCHLATER":
+    case ACTION_TYPE.SET_WATCHLATER:
       return { ...state, watchlater: action.payload };
-    case "SET_SEARCH":
+    case ACTION_TYPE.SET_SEARCH:
       return { ...state, searchTerm: action.payload };
-    case "SET_CATEGORY":
+    case ACTION_TYPE.SET_CATEGORY:
       return { ...state, filterCategory: action.payload };
-    case "TOGGLE_LOADING":
+    case ACTION_TYPE.TOGGLE_LOADING:
       return { ...state, loading: { ...state.loading, ...action.payload } };
-    case "ACTIVATE_ALERT":
+    case ACTION_TYPE.ACTIVATE_ALERT:
       return {
         ...state,
         alert: {
@@ -33,7 +35,7 @@ export const reducer = (state, action) => {
           color: action.payload.color,
         },
       };
-    case "DEACTIVATE_ALERT":
+    case ACTION_TYPE.DEACTIVATE_ALERT:
       return {
         ...state,
         alert: { message: null, active: false, color: "green" },
