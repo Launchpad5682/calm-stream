@@ -1,4 +1,4 @@
-<!-- <p align="center"><img src="https://yifgzyyqlpgydlzwcsaj.supabase.in/storage/v1/object/sign/calm-stream/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJjYWxtLXN0cmVhbS9sb2dvLnBuZyIsImlhdCI6MTY0NzYwMDU0NywiZXhwIjoxOTYyOTYwNTQ3fQ.x5u9JALHIA9z3cD9AXOk8BzBQYIAAjqs546G3uqNKlg" height="80"/></p>
+<p align="center"><img src="https://yifgzyyqlpgydlzwcsaj.supabase.in/storage/v1/object/sign/calm-stream/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJjYWxtLXN0cmVhbS9sb2dvLnBuZyIsImlhdCI6MTY0NzYwMDU0NywiZXhwIjoxOTYyOTYwNTQ3fQ.x5u9JALHIA9z3cD9AXOk8BzBQYIAAjqs546G3uqNKlg" height="80"/></p>
 
 <h1 align="center">Calm Stream</h1>
 
@@ -54,16 +54,16 @@ This folder contains the Mock Backend created for Video Library App. It contains
 
 ## TBA(To be added)
 
-- [ ] Watch Later
-- [ ] Search Video
+- [x] Watch Later
+- [x] Search Video
 - [ ] Notes on a video
-- [ ] Filter Videos with Category
+- [x] Filter Videos with Category
 - [ ] Forget Password
-- [ ] Loading & Alerts
+- [x] Loading & Alerts
 - [ ] User Profile Page
 - [ ] Sort by Latest Videos
 - [ ] Markdown in Notes
 - [ ] Custom Video View Count
 - [ ] Upload Video
 - [ ] Remember me while login
-- [ ] Infinite Scroll on Video Listing Page -->
+- [ ] Infinite Scroll on Video Listing Page
