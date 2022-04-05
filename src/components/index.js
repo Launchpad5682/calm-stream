@@ -1,3 +1,4 @@
+export { Alert } from "./Alert/Alert";
 export { BadgeButton } from "./Buttons/BadgeButton";
 export { CheckBoxInput } from "./Input/CheckBoxInput/CheckBoxInput";
 export { Header } from "./Header/Header";
