@@ -17,8 +17,8 @@ export const AuthProvider = ({ children }) => {
   const { dispatch } = useDataProvider();
 
   const login = async (
-    email = "adarshbalika@gmail.com",
-    password = "adarshBalika123"
+    email = "saurabhsuthar@gmail.com",
+    password = "qwerty1234"
   ) => {
     try {
       setLoading(true);
