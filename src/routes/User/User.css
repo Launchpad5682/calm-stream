@@ -1,0 +1,16 @@
+.user__profile--section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.user__profile--container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.btn--bottom {
+  margin-top: auto;
+}
