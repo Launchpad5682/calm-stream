@@ -1,7 +1,7 @@
 import React from "react";
 import { CustomNavLink } from "../../helper/CustomNavLink";
 import "./Sidebar.css";
-import { AiFillHome, AiOutlineLogin } from "react-icons/ai";
+import { AiFillHome, AiOutlineLogin, AiOutlineUserAdd } from "react-icons/ai";
 import { MdHistory } from "react-icons/md";
 import {
   BsFillCollectionPlayFill,
@@ -81,6 +81,17 @@ export function Sidebar() {
         >
           <AiOutlineLogin />
           <span>Login</span>
+        </CustomNavLink>
+      )}
+      {isAuthenticated && (
+        <CustomNavLink
+          activeClassName="typography--green"
+          className="h5__typography typography--white navlink"
+          inactiveClassName="typography--white"
+          to="/user"
+        >
+          <AiOutlineUserAdd />
+          <span>User</span>
         </CustomNavLink>
       )}
     </aside>
