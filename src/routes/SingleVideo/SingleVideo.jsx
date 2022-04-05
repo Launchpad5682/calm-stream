@@ -80,9 +80,9 @@ export function SingleVideo() {
                   <BadgeButton active={likedVideo} clickHandler={likeHandler}>
                     <BsFillHandThumbsUpFill />
                   </BadgeButton>
-                  <BadgeButton active={false} clickHandler={() => {}}>
+                  {/* <BadgeButton active={false} clickHandler={() => {}}>
                     <BsFillHandThumbsDownFill />
-                  </BadgeButton>
+                  </BadgeButton> */}
                   <BadgeButton
                     active={false}
                     clickHandler={() => openPlaylist(video, dispatch)}
