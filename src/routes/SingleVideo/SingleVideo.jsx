@@ -13,12 +13,12 @@ import { useAuthProvider } from "../../context/auth-context";
 import { useDataProvider } from "../../context/data-context";
 import { ACTION_TYPE, openPlaylist } from "../../utils";
 import "./SingleVideo.css";
-import { SingleVideoContainer } from "./SingleVideoContainer";
+import { useSingleVideo } from "./useSingleVideo";
 import { useNavigate } from "react-router-dom";
 
 export function SingleVideo() {
   const { video, likedVideo, likeHandler, inWatchLater, watchLaterHandler } =
-    SingleVideoContainer();
+    useSingleVideo();
   const { modal, history, dispatch } = useDataProvider();
   const { token } = useAuthProvider();
   const navigate = useNavigate();
