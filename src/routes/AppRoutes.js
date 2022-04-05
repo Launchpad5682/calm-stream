@@ -9,7 +9,6 @@ import { History } from "./History/History";
 import { Playlists } from "./Playlists/Playlists";
 import { Liked } from "./Liked/Liked";
 import { WatchLater } from "./WatchLater/WatchLater";
-import { Main } from "./Main/Main";
 import { PlayList } from "./PlayList/PlayList";
 import { useAuthProvider } from "../context/auth-context";
 import { useDataProvider } from "../context/data-context";
@@ -73,9 +72,8 @@ export function AppRoutes() {
 
   return (
     <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/" element={<Main />}>
-        <Route path="videos" element={<VideoListing />} />
+      <Route path="/" element={<App />}>
+        <Route index element={<VideoListing />} />
         <Route path="videos/:videoID" element={<SingleVideo />} />
         <Route path="login" element={<Login />} />
         <Route path="/" element={<PrivateRoute />}>
