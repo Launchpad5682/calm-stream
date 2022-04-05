@@ -3,7 +3,7 @@ import "./App.css";
 import { Outlet } from "react-router-dom";
 import { Header, Sidebar, Alert } from "./components";
 
-function App() {
+export function App() {
   return (
     <div className="body--section">
       <Header />
@@ -17,5 +17,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
