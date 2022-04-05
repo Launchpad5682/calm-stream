@@ -1,7 +1,7 @@
 import MockmanEs from "mockman-js";
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import App from "../App";
+import { App } from "../App";
 import { Login } from "./Auth/Login";
 import { SingleVideo } from "./SingleVideo/SingleVideo";
 import { VideoListing } from "./VideoLisitng/VideoListing";
