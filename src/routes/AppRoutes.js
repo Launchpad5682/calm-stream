@@ -15,6 +15,7 @@ import { useDataProvider } from "../context/data-context";
 import axios from "axios";
 import { PrivateRoute } from "../helper/PrivateRoute";
 import { ACTION_TYPE } from "../utils";
+import { NotFound } from "./NotFound/NotFound";
 
 export function AppRoutes() {
   const { token } = useAuthProvider();
@@ -82,6 +83,7 @@ export function AppRoutes() {
           <Route path="playlists/:playlistID" element={<PlayList />} />
           <Route path="history" element={<History />} />
           <Route path="watch-later" element={<WatchLater />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Route>
       <Route path="/api/mockman" element={<MockmanEs />} />

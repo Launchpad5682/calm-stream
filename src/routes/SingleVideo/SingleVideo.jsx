@@ -68,7 +68,6 @@ export function SingleVideo() {
                   title="YouTube video player"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                  onPla
                 ></iframe>
               </div>
               <span className="typography--white h4__typography">
