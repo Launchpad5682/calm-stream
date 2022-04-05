@@ -25,8 +25,8 @@ export function useSearchBar() {
           payload: { videos: false },
         });
       }, 1000);
-      if (pathname !== "/videos") {
-        navigate("/videos");
+      if (pathname !== "/") {
+        navigate("/");
       }
     }
   };
