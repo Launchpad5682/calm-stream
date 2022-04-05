@@ -41,7 +41,7 @@
 }
 
 .category--tag {
-  background-color: var(--green-teal);
+  border: solid 2px var(--white);
   padding: 4px;
   width: fit-content;
   border-radius: 5px;

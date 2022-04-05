@@ -4,7 +4,6 @@ import {
   BsStopwatchFill,
   BsFillCollectionPlayFill,
   BsFillHandThumbsUpFill,
-  BsFillHandThumbsDownFill,
 } from "react-icons/bs";
 import { BadgeButton } from "../Buttons/BadgeButton";
 import { useVideoCard } from "./useVideoCard";
@@ -41,9 +40,9 @@ export function VideoCard({ video }) {
           <BadgeButton active={likedVideo} clickHandler={likeHandler}>
             <BsFillHandThumbsUpFill />
           </BadgeButton>
-          <BadgeButton active={false} clickHandler={() => {}}>
+          {/* <BadgeButton active={false} clickHandler={() => {}}>
             <BsFillHandThumbsDownFill />
-          </BadgeButton>
+          </BadgeButton> */}
           <BadgeButton active={false} clickHandler={playlistHandler}>
             <BsFillCollectionPlayFill />
           </BadgeButton>
