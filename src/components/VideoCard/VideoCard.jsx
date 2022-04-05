@@ -22,7 +22,10 @@ export function VideoCard({ video }) {
 
   return (
     <div className="card__flexcolumn card__flexcolumn--lg card__shadow--green video--card">
-      <div className="item--image" onClick={videoCardClickHandler}>
+      <div
+        className="item--image cursor--pointer"
+        onClick={videoCardClickHandler}
+      >
         <img
           src={thumbnail}
           className="image--fitwidth img--fitheight"
@@ -30,12 +33,14 @@ export function VideoCard({ video }) {
         />
       </div>
       <div className="card--detail">
-        <span className="h6__typography typography--white bold--typography">
-          {title}
-        </span>
-        <span className="subtitle1__typography typography--white">
-          {creator}
-        </span>
+        <div className="cursor--pointer" onClick={videoCardClickHandler}>
+          <span className="h6__typography typography--white bold--typography">
+            {title}
+          </span>
+          <span className="subtitle1__typography typography--white">
+            {creator}
+          </span>
+        </div>
         <div className="card--btns">
           <BadgeButton active={likedVideo} clickHandler={likeHandler}>
             <BsFillHandThumbsUpFill />
@@ -49,7 +54,7 @@ export function VideoCard({ video }) {
           <BadgeButton active={inWatchLater} clickHandler={watchLaterHandler}>
             <BsStopwatchFill />
           </BadgeButton>
-          <span className="subtitle1__typography typography--white category--tag h6__typography">
+          <span className="subtitle1__typography typography--white category--tag h6__typography cursor--pointer">
             {categoryName}
           </span>
         </div>

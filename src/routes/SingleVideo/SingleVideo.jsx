@@ -58,7 +58,10 @@ export function SingleVideo() {
         <>
           <div className="single__video--page">
             <div className="single__video--container">
-              <span className="h6__typography" onClick={() => navigate(-1)}>
+              <span
+                className="h6__typography cursor--pointer"
+                onClick={() => navigate(-1)}
+              >
                 <BiArrowBack />
               </span>
               <div className="iframe--container">

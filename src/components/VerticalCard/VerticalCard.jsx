@@ -34,7 +34,7 @@ export function VerticalCard({ video, clickHandler }) {
   };
 
   return (
-    <div className="vertical--card card__shadow--green">
+    <div className="vertical--card card__shadow--green cursor--pointer">
       <div
         className="vertical__card--detail"
         onClick={() => videoCardClickHandler()}
