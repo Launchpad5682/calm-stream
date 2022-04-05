@@ -22,6 +22,7 @@ export function SearchBar() {
         onChange={changeHandler}
         onKeyDown={searchHandler}
         value={searchInput}
+        placeholder="Search"
       />
       <span className="search__btn">
         {searchInput.length > 0 && (
