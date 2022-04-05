@@ -1,25 +1,25 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Calm Stream",
+  "name": "A streaming platform for mindful development",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "https://yifgzyyqlpgydlzwcsaj.supabase.in/storage/v1/object/sign/calm-stream/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJjYWxtLXN0cmVhbS9sb2dvLnBuZyIsImlhdCI6MTY0NzYwMDU0NywiZXhwIjoxOTYyOTYwNTQ3fQ.x5u9JALHIA9z3cD9AXOk8BzBQYIAAjqs546G3uqNKlg",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "https://yifgzyyqlpgydlzwcsaj.supabase.in/storage/v1/object/sign/calm-stream/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJjYWxtLXN0cmVhbS9sb2dvLnBuZyIsImlhdCI6MTY0NzYwMDU0NywiZXhwIjoxOTYyOTYwNTQ3fQ.x5u9JALHIA9z3cD9AXOk8BzBQYIAAjqs546G3uqNKlg",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "https://yifgzyyqlpgydlzwcsaj.supabase.in/storage/v1/object/sign/calm-stream/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJjYWxtLXN0cmVhbS9sb2dvLnBuZyIsImlhdCI6MTY0NzYwMDU0NywiZXhwIjoxOTYyOTYwNTQ3fQ.x5u9JALHIA9z3cD9AXOk8BzBQYIAAjqs546G3uqNKlg",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#08111b",
+  "background_color": "#08111b"
 }
