@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import {
   BsFillCollectionPlayFill,
-  BsFillHandThumbsDownFill,
   BsFillHandThumbsUpFill,
   BsStopwatchFill,
 } from "react-icons/bs";
