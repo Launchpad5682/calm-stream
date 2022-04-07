@@ -36,12 +36,6 @@ export function PlayList() {
         <span className="h5__typography typography--white bold--typography">
           Videos {videos.length}
         </span>
-        <button
-          className="button--sm button__nav button--red button__rounded--sm button__nav--black filter--btn"
-          id="open--filter"
-        >
-          <span className="button__typography typography--black">Filter</span>
-        </button>
       </div>
       {videos.length > 0 ? (
         <div className="flex--column padding--sm--vertical">

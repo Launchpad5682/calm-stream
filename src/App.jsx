@@ -1,9 +1,9 @@
 import React from "react";
+import "./App.css";
 import { Outlet } from "react-router-dom";
-import { Header, Sidebar } from "../../components";
-import { Alert } from "../../components/Alert/Alert";
+import { Header, Sidebar, Alert } from "./components";
 
-export function Main() {
+export function App() {
   return (
     <div className="body--section">
       <Header />

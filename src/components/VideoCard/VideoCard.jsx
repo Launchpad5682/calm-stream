@@ -4,30 +4,28 @@ import {
   BsStopwatchFill,
   BsFillCollectionPlayFill,
   BsFillHandThumbsUpFill,
-  BsFillHandThumbsDownFill,
 } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
 import { BadgeButton } from "../Buttons/BadgeButton";
-import { useVideoLike } from "../../hooks/useVideoLike";
-import { useDataProvider } from "../../context/data-context";
-import { openPlaylist } from "../../utils";
-import { useWatchLater } from "../../hooks/useWatchLater";
+import { useVideoCard } from "./useVideoCard";
 
 export function VideoCard({ video }) {
-  const { _id, title, creator, categoryName, thumbnail } = video;
+  const { title, creator, categoryName, thumbnail } = video;
 
-  const navigate = useNavigate();
+  const {
+    videoCardClickHandler,
+    likedVideo,
+    likeHandler,
+    playlistHandler,
+    inWatchLater,
+    watchLaterHandler,
+  } = useVideoCard(video);
 
-  const videoCardClickHandler = () => {
-    navigate(`/videos/${_id}`);
-  };
-
-  const { likedVideo, likeHandler } = useVideoLike(video);
-  const { inWatchLater, watchLaterHandler } = useWatchLater(video);
-  const { dispatch } = useDataProvider();
   return (
     <div className="card__flexcolumn card__flexcolumn--lg card__shadow--green video--card">
-      <div className="item--image" onClick={videoCardClickHandler}>
+      <div
+        className="item--image cursor--pointer"
+        onClick={videoCardClickHandler}
+      >
         <img
           src={thumbnail}
           className="image--fitwidth img--fitheight"
@@ -35,29 +33,28 @@ export function VideoCard({ video }) {
         />
       </div>
       <div className="card--detail">
-        <span className="h6__typography typography--white bold--typography">
-          {title}
-        </span>
-        <span className="subtitle1__typography typography--white">
-          {creator}
-        </span>
+        <div className="cursor--pointer" onClick={videoCardClickHandler}>
+          <span className="h6__typography typography--white bold--typography">
+            {title}
+          </span>
+          <span className="subtitle1__typography typography--white">
+            {creator}
+          </span>
+        </div>
         <div className="card--btns">
           <BadgeButton active={likedVideo} clickHandler={likeHandler}>
             <BsFillHandThumbsUpFill />
           </BadgeButton>
-          <BadgeButton active={false} clickHandler={() => {}}>
+          {/* <BadgeButton active={false} clickHandler={() => {}}>
             <BsFillHandThumbsDownFill />
-          </BadgeButton>
-          <BadgeButton
-            active={false}
-            clickHandler={() => openPlaylist(video, dispatch)}
-          >
+          </BadgeButton> */}
+          <BadgeButton active={false} clickHandler={playlistHandler}>
             <BsFillCollectionPlayFill />
           </BadgeButton>
           <BadgeButton active={inWatchLater} clickHandler={watchLaterHandler}>
             <BsStopwatchFill />
           </BadgeButton>
-          <span className="subtitle1__typography typography--white category--tag h6__typography">
+          <span className="subtitle1__typography typography--white category--tag h6__typography cursor--pointer">
             {categoryName}
           </span>
         </div>

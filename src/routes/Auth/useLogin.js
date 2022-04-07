@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthProvider } from "../../context/auth-context";
 
-export function LoginContainer() {
+export function useLogin() {
   const [form, setForm] = useState({
-    email: "adarshbalika@gmail.com",
-    password: "adarshBalika123",
+    email: "saurabhsuthar@gmail.com",
+    password: "qwerty1234",
   });
 
   const { login, token, loading } = useAuthProvider();
@@ -18,7 +18,7 @@ export function LoginContainer() {
 
   useEffect(() => {
     if (token) {
-      navigate("/videos");
+      navigate("/");
     }
   }, [navigate, token]);
 

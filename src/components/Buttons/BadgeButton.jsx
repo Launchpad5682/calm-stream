@@ -3,7 +3,7 @@ import "./BadgeButton.css";
 
 export function BadgeButton({ children, active, clickHandler }) {
   return (
-    <div className="badge--button">
+    <div className="badge--button cursor--pointer">
       <span
         className={`h5__typography typography--${
           active === true ? "green" : "white"

@@ -1,6 +1,6 @@
 import { useDataProvider } from "../../context/data-context";
 
-export function VideoListingContainer() {
+export function useVideoListing() {
   const { videos, modal, categories, filterCategory, searchTerm, loading } =
     useDataProvider();
 

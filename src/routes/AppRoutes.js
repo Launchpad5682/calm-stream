@@ -1,7 +1,7 @@
 import MockmanEs from "mockman-js";
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import App from "../App";
+import { App } from "../App";
 import { Login } from "./Auth/Login";
 import { SingleVideo } from "./SingleVideo/SingleVideo";
 import { VideoListing } from "./VideoLisitng/VideoListing";
@@ -9,13 +9,14 @@ import { History } from "./History/History";
 import { Playlists } from "./Playlists/Playlists";
 import { Liked } from "./Liked/Liked";
 import { WatchLater } from "./WatchLater/WatchLater";
-import { Main } from "./Main/Main";
 import { PlayList } from "./PlayList/PlayList";
 import { useAuthProvider } from "../context/auth-context";
 import { useDataProvider } from "../context/data-context";
 import axios from "axios";
 import { PrivateRoute } from "../helper/PrivateRoute";
 import { ACTION_TYPE } from "../utils";
+import { NotFound } from "./NotFound/NotFound";
+import { User } from "./User/User";
 
 export function AppRoutes() {
   const { token } = useAuthProvider();
@@ -73,9 +74,8 @@ export function AppRoutes() {
 
   return (
     <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/" element={<Main />}>
-        <Route path="videos" element={<VideoListing />} />
+      <Route path="/" element={<App />}>
+        <Route index element={<VideoListing />} />
         <Route path="videos/:videoID" element={<SingleVideo />} />
         <Route path="login" element={<Login />} />
         <Route path="/" element={<PrivateRoute />}>
@@ -84,6 +84,8 @@ export function AppRoutes() {
           <Route path="playlists/:playlistID" element={<PlayList />} />
           <Route path="history" element={<History />} />
           <Route path="watch-later" element={<WatchLater />} />
+          <Route path="user" element={<User />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Route>
       <Route path="/api/mockman" element={<MockmanEs />} />

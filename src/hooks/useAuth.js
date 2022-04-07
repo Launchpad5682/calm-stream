@@ -8,6 +8,8 @@ export function useAuth() {
   useEffect(() => {
     if (token) {
       setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
     }
   }, [token]);
 

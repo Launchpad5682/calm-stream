@@ -9,12 +9,7 @@ export const CustomNavLink = ({
   ...rest
 }) => {
   const location = useLocation();
-  // console.log(location);
-  // console.log(location.pathname);
-  const isActive = location.pathname.includes(to);
-  // console.log(isActive);
-
-  // console.log(inactiveClassName);
+  const isActive = location.pathname === to;
 
   const allClassName =
     className +

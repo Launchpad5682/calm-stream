@@ -4,11 +4,10 @@ import { Chip } from "../../components/Chip/Chip";
 import { Loader } from "../../components/Loader/Loader";
 import { Modal } from "../../components/Modal/Modal";
 import "./VideoListing.css";
-import { VideoListingContainer } from "./VideoListingContainer";
+import { useVideoListing } from "./useVideoListing";
 
 export function VideoListing() {
-  const { modal, categories, loading, filteredVideos } =
-    VideoListingContainer();
+  const { modal, categories, loading, filteredVideos } = useVideoListing();
 
   return (
     <>

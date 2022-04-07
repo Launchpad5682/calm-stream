@@ -1,7 +1,7 @@
 import React from "react";
 import { BsSearch, BsXLg } from "react-icons/bs";
 import "./SearchBar.css";
-import { SearchBarContainer } from "./SearchBarContainer";
+import { useSearchBar } from "./useSearchBar";
 
 export function SearchBar() {
   const {
@@ -10,7 +10,7 @@ export function SearchBar() {
     searchHandler,
     clearHandler,
     searchClickHandler,
-  } = SearchBarContainer();
+  } = useSearchBar();
 
   return (
     <div className="search__container">
@@ -22,6 +22,7 @@ export function SearchBar() {
         onChange={changeHandler}
         onKeyDown={searchHandler}
         value={searchInput}
+        placeholder="Search"
       />
       <span className="search__btn">
         {searchInput.length > 0 && (

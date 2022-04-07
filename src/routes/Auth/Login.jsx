@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Auth.css";
-import { LoginContainer } from "./LoginContainer";
+import { useLogin } from "./useLogin";
 
 export function Login() {
-  const { form, loading, loginHandler, changeHandler } = LoginContainer();
+  const { form, loading, loginHandler, changeHandler } = useLogin();
 
   return (
     <main className="main__form--section">

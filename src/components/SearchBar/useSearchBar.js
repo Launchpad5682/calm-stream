@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useDataProvider } from "../../context/data-context";
 import { ACTION_TYPE } from "../../utils";
 
-export function SearchBarContainer() {
+export function useSearchBar() {
   const [searchInput, setSearchInput] = useState("");
   const { dispatch } = useDataProvider();
   const { pathname } = useLocation();
@@ -25,8 +25,8 @@ export function SearchBarContainer() {
           payload: { videos: false },
         });
       }, 1000);
-      if (pathname !== "/videos") {
-        navigate("/videos");
+      if (pathname !== "/") {
+        navigate("/");
       }
     }
   };
@@ -40,8 +40,8 @@ export function SearchBarContainer() {
         payload: { videos: false },
       });
     }, 1000);
-    if (pathname !== "/videos") {
-      navigate("/videos");
+    if (pathname !== "/") {
+      navigate("/");
     }
   };
 

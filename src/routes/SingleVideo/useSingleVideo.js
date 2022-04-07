@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { useVideoLike } from "../../hooks/useVideoLike";
 import { useWatchLater } from "../../hooks/useWatchLater";
 
-export function SingleVideoContainer() {
+export function useSingleVideo() {
   const [video, setVideo] = useState({});
   const { pathname } = useLocation();
 
