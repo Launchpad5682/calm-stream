@@ -11,59 +11,29 @@
 <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"/>
 <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
 <img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" />
-<img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" />
+<img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
 </p>
 
 ---
 
-Live link: [Link](https://calm-stream-app.netlify.app/)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/bb205176-4106-4970-9150-723d53c46ace/deploy-status)](https://app.netlify.com/sites/calm-stream-app/deploys)
+Live link: [Link](https://calm-stream.vercel.app/)
 
-This folder contains the Mock Backend created for Video Library App. It contains different API end-points and database configuration for building Video Library; so that you can focus on building Frontend.
-
+### Built with: 
+- React
 - Built using [morpho-ui component.](https://morpho-ui-css-docs.netlify.app)
+
+### Features: 
 - Video Listing Page
 - Playlist Management
 - Single Video Page
-- Like/Dislike
+- Like
 - History
 - Authentication
   - Login
+  - Signup
+  - Logout
+- User Profile
+- Watch Later
 
-## Screenshots
+https://user-images.githubusercontent.com/43728957/162262315-8d99b477-49a9-46c3-b263-386590bb0547.mp4
 
-### Home
-
-<img src="./screenshots/home.png"/>
-
-### Login
-
-<img src="./screenshots/login.png"/>
-
-### Single Video
-
-<img src="./screenshots/single-video.png" />
-
-### Videos
-
-<img src="./screenshots/videos.png"/>
-
-### Drawer
-
-<img src="./screenshots/responsive-drawer.png" />
-
-## TBA(To be added)
-
-- [x] Watch Later
-- [x] Search Video
-- [ ] Notes on a video
-- [x] Filter Videos with Category
-- [ ] Forget Password
-- [x] Loading & Alerts
-- [ ] User Profile Page
-- [ ] Sort by Latest Videos
-- [ ] Markdown in Notes
-- [ ] Custom Video View Count
-- [ ] Upload Video
-- [ ] Remember me while login
-- [ ] Infinite Scroll on Video Listing Page
