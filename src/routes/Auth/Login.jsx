@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
 import { useLogin } from "./useLogin";
 
 export function Login() {
   const { form, loading, loginHandler, changeHandler } = useLogin();
-
+  const navigate = useNavigate();
   return (
     <main className="main__form--section">
       <div className="form--container">
@@ -62,7 +62,10 @@ export function Login() {
               {loading ? "Logging in...." : "Login"}
             </span>
           </button>
-          <button className="button--sm button__outline button__outline--green button__rounded--sm button__icon button__icon fullwidth-btn bold--typography">
+          <button
+            className="button--sm button__outline button__outline--green button__rounded--sm button__icon button__icon fullwidth-btn bold--typography"
+            onClick={() => navigate("/signup")}
+          >
             <span className="subtitle1__typography typography--green">
               Create an account
             </span>
