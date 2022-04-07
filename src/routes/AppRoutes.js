@@ -17,6 +17,7 @@ import { PrivateRoute } from "../helper/PrivateRoute";
 import { ACTION_TYPE } from "../utils";
 import { NotFound } from "./NotFound/NotFound";
 import { User } from "./User/User";
+import { Signup } from "./Auth/Signup";
 
 export function AppRoutes() {
   const { token } = useAuthProvider();
@@ -78,6 +79,7 @@ export function AppRoutes() {
         <Route index element={<VideoListing />} />
         <Route path="videos/:videoID" element={<SingleVideo />} />
         <Route path="login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<PrivateRoute />}>
           <Route path="liked-videos" element={<Liked />} />
           <Route path="playlists" element={<Playlists />} />
