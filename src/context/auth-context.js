@@ -51,14 +51,48 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const signup = async (email, password, firstName, lastName) => {
+    try {
+      setLoading(true);
+      const response = await axios.post("/api/auth/signup", {
+        email,
+        password,
+        firstName,
+        lastName,
+      });
+      if (response.status === 201) {
+        const {
+          data: { createdUser, encodedToken },
+        } = response;
+        localStorage.setItem("login", JSON.stringify({ token: encodedToken }));
+        setToken(encodedToken);
+        localStorage.setItem("user", JSON.stringify({ user: createdUser }));
+        setUser(createdUser);
+        setLoading(false);
+        dispatch({
+          type: ACTION_TYPE.ACTIVATE_ALERT,
+          payload: { message: "Sign Up successful", color: "green" },
+        });
+      }
+    } catch (error) {
+      console.log("Error in login user", error);
+    }
+  };
+
   const logout = () => {
     localStorage.clear();
     setToken(null);
     setUser(null);
-    };
+    dispatch({
+      type: ACTION_TYPE.ACTIVATE_ALERT,
+      payload: { message: "Log Out successful", color: "green" },
+    });
+  };
 
   return (
-    <AuthContext.Provider value={{ user, token, login, logout, loading }}>
+    <AuthContext.Provider
+      value={{ user, token, login, logout, loading, signup }}
+    >
       {children}
     </AuthContext.Provider>
   );
