@@ -1,9 +1,10 @@
 import axios from "axios";
-import { ACTION_TYPE } from "./constants";
+import { ACTION_TYPE, API_URI } from "./constants";
 
 export const unLikeVideo = async (video, token, dispatch) => {
   try {
-    const response = await axios.delete(`/api/user/likes/${video._id}`, {
+    console.log(token, "token for request");
+    const response = await axios.delete(`${API_URI}/likes/${video._id}`, {
       headers: { authorization: token },
     });
     const { data, status } = response;
@@ -17,11 +18,10 @@ export const unLikeVideo = async (video, token, dispatch) => {
 
 export const likeVideo = async (video, token, dispatch) => {
   try {
-    const response = await axios.post(
-      "/api/user/likes",
-      { video: video },
-      { headers: { authorization: token } }
-    );
+    console.log(token, "token for request");
+    const response = await axios.post(`${API_URI}/likes/${video._id}`, null, {
+      headers: { authorization: token },
+    });
     const { data, status } = response;
     if (status === 201) {
       dispatch({ type: ACTION_TYPE.SET_LIKED_VIDEOS, payload: data.likes });

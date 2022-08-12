@@ -14,3 +14,5 @@ export const ACTION_TYPE = {
   ACTIVATE_ALERT: "ACTIVATE_ALERT",
   DEACTIVATE_ALERT: "DEACTIVATE_ALERT",
 };
+
+export const API_URI = "http://localhost:3002/v1";
