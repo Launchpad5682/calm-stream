@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { createContext } from "react";
 import { useContext } from "react";
 import { ACTION_TYPE } from "../utils";
+import { API_URI } from "../utils/constants";
 import { useDataProvider } from "./data-context";
 
 export const AuthContext = createContext();
@@ -22,19 +23,20 @@ export const AuthProvider = ({ children }) => {
   ) => {
     try {
       setLoading(true);
-      const response = await axios.post("/api/auth/login", {
+      const response = await axios.post(`${API_URI}/login`, {
         email,
         password,
       });
 
       if (response.status === 200) {
         const {
-          data: { foundUser, encodedToken },
+          data: { body },
         } = response;
-        setToken(encodedToken);
-        setUser(foundUser);
-        localStorage.setItem("login", JSON.stringify({ token: encodedToken }));
-        localStorage.setItem("user", JSON.stringify({ user: foundUser }));
+        const { userData, token } = body;
+        setToken(token);
+        setUser(userData);
+        localStorage.setItem("login", JSON.stringify({ token }));
+        localStorage.setItem("user", JSON.stringify({ user: userData }));
         setLoading(false);
         dispatch({
           type: ACTION_TYPE.ACTIVATE_ALERT,
@@ -54,7 +56,7 @@ export const AuthProvider = ({ children }) => {
   const signup = async (email, password, firstName, lastName) => {
     try {
       setLoading(true);
-      const response = await axios.post("/api/auth/signup", {
+      const response = await axios.post(`${API_URI}/signup`, {
         email,
         password,
         firstName,
@@ -62,12 +64,13 @@ export const AuthProvider = ({ children }) => {
       });
       if (response.status === 201) {
         const {
-          data: { createdUser, encodedToken },
+          data: { body },
         } = response;
-        localStorage.setItem("login", JSON.stringify({ token: encodedToken }));
-        setToken(encodedToken);
-        localStorage.setItem("user", JSON.stringify({ user: createdUser }));
-        setUser(createdUser);
+        const { userData, token } = body;
+        localStorage.setItem("login", JSON.stringify({ token }));
+        setToken(token);
+        localStorage.setItem("user", JSON.stringify({ user: userData }));
+        setUser(userData);
         setLoading(false);
         dispatch({
           type: ACTION_TYPE.ACTIVATE_ALERT,
