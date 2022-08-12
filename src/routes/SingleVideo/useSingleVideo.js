@@ -12,7 +12,9 @@ export function useSingleVideo() {
     const id = pathname.split("/")[2];
     (async () => {
       try {
-        const response = await axios.get(`/api/video/${id}`);
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URI}/video/${id}`
+        );
         const { data } = response;
         setVideo({ ...data.video });
       } catch (error) {

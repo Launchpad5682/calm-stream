@@ -27,9 +27,12 @@ export function AppRoutes() {
     if (token) {
       (async () => {
         try {
-          const response = await axios.get("/api/user/likes", {
-            headers: { authorization: token },
-          });
+          const response = await axios.get(
+            `${process.env.REACT_APP_API_URI}/likes/`,
+            {
+              headers: { authorization: token },
+            }
+          );
           const { data, status } = response;
           if (status === 200) {
             dispatch({
@@ -43,9 +46,12 @@ export function AppRoutes() {
       })();
       (async () => {
         try {
-          const response = await axios.get("/api/user/history", {
-            headers: { authorization: token },
-          });
+          const response = await axios.get(
+            `${process.env.REACT_APP_API_URI}/history`,
+            {
+              headers: { authorization: token },
+            }
+          );
           const { data, status } = response;
           if (status === 200) {
             dispatch({ type: ACTION_TYPE.SET_HISTORY, payload: data.history });
@@ -56,9 +62,12 @@ export function AppRoutes() {
       })();
       (async () => {
         try {
-          const response = await axios.get("/api/user/playlists", {
-            headers: { authorization: token },
-          });
+          const response = await axios.get(
+            `${process.env.REACT_APP_API_URI}/playlists`,
+            {
+              headers: { authorization: token },
+            }
+          );
           const { data, status } = response;
           if (status === 200) {
             dispatch({

@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { createContext } from "react";
 import { useContext } from "react";
 import { ACTION_TYPE } from "../utils";
-import { API_URI } from "../utils/constants";
 import { useDataProvider } from "./data-context";
 
 export const AuthContext = createContext();
@@ -23,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   ) => {
     try {
       setLoading(true);
-      const response = await axios.post(`${API_URI}/login`, {
+      const response = await axios.post(`${process.env.REACT_APP_API_URI}/login`, {
         email,
         password,
       });
@@ -56,7 +55,7 @@ export const AuthProvider = ({ children }) => {
   const signup = async (email, password, firstName, lastName) => {
     try {
       setLoading(true);
-      const response = await axios.post(`${API_URI}/signup`, {
+      const response = await axios.post(`${process.env.REACT_APP_API_URI}/signup`, {
         email,
         password,
         firstName,

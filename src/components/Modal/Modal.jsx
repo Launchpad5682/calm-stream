@@ -22,7 +22,7 @@ export function Modal() {
         title: playlist.title,
         _id: playlist._id,
         checked:
-          playlist.videos.find((video) => video._id === selectedVideo._id) !==
+          playlist.videos.find((video) => video === selectedVideo._id) !==
           undefined,
       };
     });
@@ -32,7 +32,7 @@ export function Modal() {
   const callUpdatedPlaylists = async () => {
     (async () => {
       try {
-        const response = await axios.get("/api/user/playlists", {
+        const response = await axios.get(`${process.env.REACT_APP_API_URI}/playlists`, {
           headers: { authorization: token },
         });
         const { data, status } = response;
@@ -59,7 +59,7 @@ export function Modal() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "/api/user/playlists",
+        `${process.env.REACT_APP_API_URI}/playlists`,
         {
           playlist: {
             title: playlistName,
@@ -87,8 +87,8 @@ export function Modal() {
     if (event.target.checked) {
       try {
         const repsonse = await axios.post(
-          `/api/user/playlists/${event.target.id}`,
-          { video: selectedVideo },
+          `${process.env.REACT_APP_API_URI}/playlist/${event.target.id}/${selectedVideo._id}`,
+          null,
           { headers: { authorization: token } }
         );
         console.info(repsonse);
@@ -106,7 +106,7 @@ export function Modal() {
     } else {
       try {
         const response = await axios.delete(
-          `/api/user/playlists/${event.target.id}/${selectedVideo._id}`,
+          `${process.env.REACT_APP_API_URI}/playlist/${event.target.id}/${selectedVideo._id}`,
           { headers: { authorization: token } }
         );
         console.log(response);

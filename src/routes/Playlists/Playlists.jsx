@@ -12,7 +12,7 @@ export function Playlists() {
     <>
       <div className="subheading">
         <span className="h5__typography typography--white bold--typography">
-          Playlists {playlists.length}
+          Playlists {playlists?.length}
         </span>
       </div>
       {playlists.length > 0 ? (

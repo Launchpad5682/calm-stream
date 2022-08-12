@@ -8,7 +8,7 @@ import { useDataProvider } from "../../context/data-context";
 import { deleteVideoFromPlaylist } from "../../utils";
 
 export function PlayList() {
-  const { modal } = useDataProvider();
+  const { modal, dispatch, playlists } = useDataProvider();
   const { pathname } = useLocation();
 
   const [videos, setVideos] = useState([]);
@@ -16,14 +16,21 @@ export function PlayList() {
   const id = pathname.split("/")[2];
 
   useEffect(() => {
+    setVideos(playlists.find((play) => play._id === id)?.videos ?? []);
+  }, [id, playlists]);
+
+  useEffect(() => {
     (async () => {
       try {
-        const response = await axios.get(`/api/user/playlists/${id}`, {
-          headers: { authorization: token },
-        });
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URI}/playlist/${id}`,
+          {
+            headers: { authorization: token },
+          }
+        );
         const { data } = response;
         console.info(response);
-        setVideos(data.playlist.videos);
+        setVideos(data.videos);
       } catch (error) {
         console.error(error);
       }
@@ -44,7 +51,7 @@ export function PlayList() {
               video={video}
               key={video._id}
               clickHandler={() =>
-                deleteVideoFromPlaylist(id, video._id, token, setVideos)
+                deleteVideoFromPlaylist(id, video._id, token, dispatch)
               }
             />
           ))}

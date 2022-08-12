@@ -3,7 +3,6 @@ import React, { useEffect, useReducer } from "react";
 import { createContext, useContext } from "react";
 import { reducer } from "../reducer/reducer";
 import { ACTION_TYPE } from "../utils";
-import { API_URI } from "../utils/constants";
 
 export const DataContext = createContext();
 export const useDataProvider = () => useContext(DataContext);
@@ -58,7 +57,7 @@ export const DataProvider = ({ children }) => {
           type: ACTION_TYPE.TOGGLE_LOADING,
           payload: { videos: true },
         });
-        const response = await axios.get(`${API_URI}/videos`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URI}/videos`);
         // console.log(response);
         const { data, status } = response;
         if (status === 200) {
@@ -77,7 +76,7 @@ export const DataProvider = ({ children }) => {
 
     (async () => {
       try {
-        const response = await axios.get(`${API_URI}/categories`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URI}/categories`);
         // console.log(response);
         const { data, status } = response;
         if (status === 200) {
