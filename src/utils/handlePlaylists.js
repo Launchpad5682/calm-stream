@@ -10,7 +10,7 @@ export const deletePlaylist = async (playlist, token, dispatch) => {
   console.info(playlist);
   try {
     const response = await axios.delete(
-      ` /api/user/playlists/${playlist._id}`,
+      `${process.env.REACT_APP_API_URI}/playlists/${playlist._id}`,
       { headers: { authorization: token } }
     );
     const { data } = response;
@@ -24,17 +24,20 @@ export const deleteVideoFromPlaylist = async (
   playlistID,
   videoID,
   token,
-  setVideos
+  dispatch
 ) => {
   try {
     const response = await axios.delete(
-      `/api/user/playlists/${playlistID}/${videoID}`,
+      `${process.env.REACT_APP_API_URI}/playlist/${playlistID}/${videoID}`,
       {
         headers: { authorization: token },
       }
     );
     const { data } = response;
-    setVideos(data.playlist.videos);
+    dispatch({
+      type: ACTION_TYPE.SET_PLAYLISTS,
+      payload: data.playlists,
+    });
   } catch (error) {
     console.error(error);
   }
