@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { useEffect } from "react";
 import { VerticalCard } from "../../components/VerticalCard/VerticalCard";
 import { useAuthProvider } from "../../context/auth-context";
 import { useDataProvider } from "../../context/data-context";
@@ -10,12 +11,39 @@ export function History() {
   const { dispatch } = useDataProvider();
   const { token } = useAuthProvider();
 
+  useEffect(() => {
+    if (token) {
+      (async () => {
+        try {
+          const response = await axios.get(
+            `${process.env.REACT_APP_API_URI}/history`,
+            {
+              headers: { authorization: token },
+            }
+          );
+          const { data, status } = response;
+          if (status === 200) {
+            dispatch({
+              type: ACTION_TYPE.SET_HISTORY,
+              payload: data.history,
+            });
+          }
+        } catch (error) {
+          console.error("Error while fetching history videos", error);
+        }
+      })();
+    }
+  }, [dispatch, token]);
+
   const deleteVideoHistory = async (video) => {
     console.info(video);
     try {
-      const response = await axios.delete(`/api/user/history/${video._id}`, {
-        headers: { authorization: token },
-      });
+      const response = await axios.delete(
+        `${process.env.REACT_APP_API_URI}/history/${video._id}`,
+        {
+          headers: { authorization: token },
+        }
+      );
       console.log(response);
       dispatch({
         type: ACTION_TYPE.SET_HISTORY,
@@ -28,9 +56,12 @@ export function History() {
 
   const deleteAllHistory = async () => {
     try {
-      const response = await axios.delete("/api/user/history/all", {
-        headers: { authorization: token },
-      });
+      const response = await axios.delete(
+        `${process.env.REACT_APP_API_URI}/history`,
+        {
+          headers: { authorization: token },
+        }
+      );
       console.log(response);
       dispatch({
         type: ACTION_TYPE.SET_HISTORY,
@@ -45,7 +76,7 @@ export function History() {
     <>
       <div className="subheading">
         <span className="h5__typography typography--white bold--typography">
-          Watch History {history.length}
+          Watch History {history.length > 0 && history.length}
         </span>
         <button
           className="button--sm button__outline button__outline--green button__rounded--md button__icon button__icon"
