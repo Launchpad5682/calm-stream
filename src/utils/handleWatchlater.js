@@ -3,9 +3,12 @@ import { ACTION_TYPE } from "./constants";
 
 export const removeFromWatchLater = async (video, token, dispatch) => {
   try {
-    const response = await axios.delete(`/api/user/watchLater/${video._id}`, {
-      headers: { authorization: token },
-    });
+    const response = await axios.delete(
+      `${process.env.REACT_APP_API_URI}/watchLater/${video._id}`,
+      {
+        headers: { authorization: token },
+      }
+    );
     const { data, status } = response;
     if (status === 200) {
       dispatch({ type: ACTION_TYPE.SET_WATCHLATER, payload: data.watchLater });
@@ -18,11 +21,11 @@ export const removeFromWatchLater = async (video, token, dispatch) => {
 export const addToWatchLater = async (video, token, dispatch) => {
   try {
     const response = await axios.post(
-      "/api/user/watchLater",
+      `${process.env.REACT_APP_API_URI}/watchLater/${video._id}`,
+      null,
       {
-        video: video,
-      },
-      { headers: { authorization: token } }
+        headers: { authorization: token },
+      }
     );
     const { data, status } = response;
     if (status === 201) {

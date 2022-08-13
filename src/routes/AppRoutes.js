@@ -47,22 +47,6 @@ export function AppRoutes() {
       (async () => {
         try {
           const response = await axios.get(
-            `${process.env.REACT_APP_API_URI}/history`,
-            {
-              headers: { authorization: token },
-            }
-          );
-          const { data, status } = response;
-          if (status === 200) {
-            dispatch({ type: ACTION_TYPE.SET_HISTORY, payload: data.history });
-          }
-        } catch (error) {
-          console.error("Error while fetching history videos", error);
-        }
-      })();
-      (async () => {
-        try {
-          const response = await axios.get(
             `${process.env.REACT_APP_API_URI}/playlists`,
             {
               headers: { authorization: token },
