@@ -32,8 +32,8 @@ export function SingleVideo() {
       (async () => {
         try {
           const response = await axios.post(
-            "/api/user/history",
-            { video: video },
+            `${process.env.REACT_APP_API_URI}/history/${video._id}`,
+            null,
             {
               headers: { authorization: token },
             }
