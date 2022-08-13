@@ -19,8 +19,8 @@ export function VerticalCard({ video, clickHandler }) {
     if (token) {
       (async () => {
         const response = await axios.post(
-          "/api/user/history",
-          { video: video },
+          `${process.env.REACT_APP_API_URI}/history/${_id}`,
+          null,
           {
             headers: { authorization: token },
           }
